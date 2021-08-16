@@ -1,0 +1,50 @@
+{
+  "name": "maintenance-management-fullstack",
+  "version": "1.0.0",
+  "description": "Fullstack MERN application build for managers to deal with their units and assets for best maintenance",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "client": "cd client && npm start",
+    "server": "concurrently \"npm run start\" \"npm run client\"",
+    "app": "nodemon app.js",
+    "build": "cd client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pebueno/maintenance-management-fullstack.git"
+  },
+  "keywords": [
+    "MERN",
+    "Clean",
+    "Architecture",
+    "Engine",
+    "Database",
+    "MongoDB",
+    "CRUD",
+    "Graphics",
+    "React.js",
+    "Express.js",
+    "Node.js",
+    "Highcharts"
+  ],
+  "author": "Pedro Ivo Bueno Sartório",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pebueno/maintenance-management-fullstack/issues"
+  },
+  "homepage": "https://github.com/pebueno/maintenance-management-fullstack#readme",
+  "engines": {
+    "node": "14.15.3"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
