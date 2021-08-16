@@ -1,11 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
+import "./App.css";
 
-import "./index.css";
+import {
+  BrowserRouter as Router,
+  // Route,
+  Switch,
+  // Link,
+  // Redirect,
+} from "react-router-dom";
+import RouteApp from "./components/App";
+//Pages
+import MainPage from "./pages";
+import ManagePage from "./pages/management";
 
-// import { DatePicker } from 'antd';
+// import NotFound from "./pages/404";
 
-// ReactDOM.render(<DatePicker />, mountNode);
-import App from "./App";
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Router>
+    <Switch>
+      <RouteApp exact path="/" component={MainPage} />
+      <RouteApp exact path="/management" component={ManagePage} />
+      {/* <Route exact path="/404" component={NotFound} /> */}
+      {/* <Redirect to="/404" /> */}
+    </Switch>
+  </Router>,
+
+  document.getElementById("root")
+);
