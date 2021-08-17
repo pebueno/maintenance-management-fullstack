@@ -14,7 +14,7 @@ router.get("/test", (req, res) => res.send("Company route testing!"));
 // @access Public
 router.get("/", (req, res) => {
   Company.find()
-    .then((companies) => res.json(Companies))
+    .then((companies) => res.json(companies))
     .catch((err) =>
       res.status(404).json({ noCompaniesfound: "No Companies found" })
     );
@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
 // @access Public
 router.get("/:id", (req, res) => {
   Company.findById(req.params.id)
-    .then((company) => res.json(Company))
+    .then((company) => res.json(company))
     .catch((err) =>
       res.status(404).json({ noCompanyfound: "No Company found" })
     );
