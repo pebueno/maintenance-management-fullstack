@@ -13,7 +13,7 @@ const { Sider } = Layout;
 
 const { SubMenu } = Menu;
 
-const App = () => {
+const SideMenu = () => {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
   return (
@@ -65,4 +65,4 @@ const App = () => {
     </Sider>
   );
 };
-export default App;
+export default SideMenu;

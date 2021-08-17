@@ -33,12 +33,6 @@ const MainPage = () => {
       <h3>Try to add your company</h3>
       <CompanyForm />
       <ShowCompanyList />
-
-      {/* <div>
-        {allCompanies.map((company, k) => {
-          <p key={k}>{company.name}</p>;
-        })}
-      </div> */}
     </>
   );
 };
