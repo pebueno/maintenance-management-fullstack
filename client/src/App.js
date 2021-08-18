@@ -17,9 +17,8 @@ import Footer from "./components/Layout/Footer";
 import MainPage from "./pages";
 import NotFound from "./pages/404";
 import ManagePage from "./pages/management";
-// import CompanyPage from "./pages/company";
-import ShowCompanyDetails from "./pages/ShowCompanyDetails";
-import UpdateCompanyInfo from "./pages/UpdateCompanyInfo";
+import ShowCompanyDetails from "./pages/Details/ShowCompanyDetails";
+import UpdateCompanyInfo from "./pages/Update/UpdateCompanyInfo";
 
 const { Header, Content } = Layout;
 

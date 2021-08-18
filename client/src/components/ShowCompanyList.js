@@ -39,18 +39,12 @@ class ShowCompanyList extends Component {
     }
 
     return (
-      <div className="ShowCompanyList">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <br />
-              <h2 className="display-4 text-center">Companies List</h2>
-            </div>
-            <hr />
-          </div>
+      <div>
+        <br />
+        <h2>Companies List</h2>
+        <hr />
 
-          <div className="list">{companyList}</div>
-        </div>
+        <div>{companyList}</div>
       </div>
     );
   }
