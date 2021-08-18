@@ -14,7 +14,7 @@ class ShowCompanyList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8082/api/companies")
+      .get(process.env.REACT_APP_API_URL + "/companies")
       .then((res) => {
         this.setState({
           companies: res.data,
@@ -35,9 +35,6 @@ class ShowCompanyList extends Component {
     } else {
       companyList = companies.map((company, k) => (
         <CompanyCard company={company} key={k} />
-        // <Link to={`/show-company/${company._id}`} company={company} key={k}>
-        //   <p>{company.name}</p>
-        // </Link>
       ));
     }
 

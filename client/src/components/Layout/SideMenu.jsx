@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Layout, Menu } from "antd";
+import axios from "axios";
 
 import {
   TrademarkCircleOutlined,
@@ -10,12 +11,53 @@ import {
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 const { Sider } = Layout;
-
 const { SubMenu } = Menu;
+
+const useConstructor = (callBack = () => {}) => {
+  const hasBeenCalled = useRef(false);
+  if (hasBeenCalled.current) return;
+  callBack();
+  hasBeenCalled.current = true;
+};
 
 const SideMenu = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [companies, setCompanies] = useState([]);
   const location = useLocation();
+
+  function getCompanies() {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/companies")
+      .then((res) => {
+        setCompanies(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Error listing the companies");
+      });
+  }
+  let companyList;
+  if (!companies) {
+    companyList = "there is no company recored!";
+  } else {
+    companyList = companies.map((company, k) => (
+      <SubMenu
+        company={company}
+        key={company._id}
+        icon={<TrademarkCircleOutlined />}
+        title={company.name}
+      >
+        <Menu.Item key={"/show-company/" + company._id}>
+          <HomeOutlined />
+          <span>management</span>
+          <Link to={"/show-company/" + company._id}></Link>
+        </Menu.Item>
+      </SubMenu>
+    ));
+  }
+  useConstructor(() => {
+    getCompanies();
+  });
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
       <Menu
@@ -30,10 +72,10 @@ const SideMenu = () => {
           <Link to="/"></Link>
         </Menu.Item>
         <SubMenu
-          key="/management"
+          key="freiosSupremos"
           icon={<TrademarkCircleOutlined />}
           title="Freios Supremos"
-          link={<Link to="/management" />}
+          // link={<Link to="/management" />}
         >
           <Menu.Item key="/management">
             <HomeOutlined />
@@ -41,8 +83,8 @@ const SideMenu = () => {
             <Link to="/management"></Link>
           </Menu.Item>
           <SubMenu key="sub3" icon={<UserOutlined />} title="User">
-            <Menu.Item key="2">Emerson</Menu.Item>
-            <Menu.Item key="3">Roberta</Menu.Item>
+            <Menu.Item key="1">Emerson</Menu.Item>
+            <Menu.Item key="2">Roberta</Menu.Item>
           </SubMenu>
           <SubMenu key="sub4" icon={<ShopOutlined />} title="Unit">
             <SubMenu key="sub5" icon={<TagsOutlined />} title="West Industry">
@@ -61,8 +103,10 @@ const SideMenu = () => {
             </SubMenu>
           </SubMenu>
         </SubMenu>
+        {companyList}
       </Menu>
     </Sider>
   );
 };
+
 export default SideMenu;

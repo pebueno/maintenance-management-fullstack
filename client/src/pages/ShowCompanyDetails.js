@@ -14,7 +14,11 @@ class showCompanyDetails extends Component {
   componentDidMount() {
     console.log("Print id: " + this.props.match.params.id);
     axios
-      .get("http://localhost:8082/api/companies/" + this.props.match.params.id)
+      .get(
+        process.env.REACT_APP_API_URL +
+          "/companies/" +
+          this.props.match.params.id
+      )
       .then((res) => {
         // console.log("Print-showcompanyDetails-API-response: " + res.data);
         this.setState({
@@ -28,9 +32,10 @@ class showCompanyDetails extends Component {
 
   onDeleteClick(id) {
     axios
-      .delete("http://localhost:8082/api/companies/" + id)
+      .delete(process.env.REACT_APP_API_URL + "/companies/" + id)
       .then((res) => {
         this.props.history.push("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log("Error form ShowCompanyDetails_deleteClick");

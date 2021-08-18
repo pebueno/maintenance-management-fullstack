@@ -9,6 +9,7 @@ function CompanyForm() {
 
     axios.post(process.env.REACT_APP_API_URL + "/companies", data);
     form.resetFields();
+    window.location.reload();
   }
   return (
     <>

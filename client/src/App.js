@@ -18,7 +18,8 @@ import MainPage from "./pages";
 import NotFound from "./pages/404";
 import ManagePage from "./pages/management";
 // import CompanyPage from "./pages/company";
-import ShowCompanyDetails from "./components/ShowCompanyDetails";
+import ShowCompanyDetails from "./pages/ShowCompanyDetails";
+import UpdateCompanyInfo from "./pages/UpdateCompanyInfo";
 
 const { Header, Content } = Layout;
 
@@ -41,6 +42,7 @@ class App extends Component {
                   path="/show-company/:id"
                   component={ShowCompanyDetails}
                 />
+                <Route path="/edit-company/:id" component={UpdateCompanyInfo} />
                 <Route exact path="/404" component={NotFound} />
                 <Redirect to="/404" />
               </Switch>
