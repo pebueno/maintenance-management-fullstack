@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
-import "../App.css";
+// import "../App.css";
 
 const UnitCard = (props) => {
   const unit = props.unit;

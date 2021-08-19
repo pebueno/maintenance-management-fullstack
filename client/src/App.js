@@ -10,8 +10,8 @@ import "./App.css";
 import { Layout } from "antd";
 
 // Components
-import SideMenu from "./components/Layout/SideMenu";
-import Footer from "./components/Layout/Footer";
+import SideMenu from "./Components/Layout/SideMenu";
+import Footer from "./Components/Layout/Footer";
 
 //Pages
 import MainPage from "./pages";

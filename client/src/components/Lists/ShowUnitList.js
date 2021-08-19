@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "../App.css";
+// import "../App.css";
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import UnitCard from "./UnitCard";
+import UnitCard from "../Cards/UnitCard";
 
 class ShowUnitList extends Component {
   constructor(props) {

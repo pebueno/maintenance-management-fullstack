@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "../App.css";
+// import "../App.css";
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import CompanyCard from "./CompanyCard";
+import CompanyCard from "../Cards/CompanyCard";
 // import UnitForm from "./UnitForm";
 import ShowUnitList from "./ShowUnitList";
 

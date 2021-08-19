@@ -2,8 +2,8 @@
 // import axios from "axios";
 import React from "react";
 
-import CompanyForm from "../components/CompanyForm";
-import ShowCompanyList from "../components/ShowCompanyList";
+import CompanyForm from "../Components/Forms/CompanyForm";
+import ShowCompanyList from "../Components/Lists/ShowCompanyList";
 
 const MainPage = () => {
   // function getData(){
