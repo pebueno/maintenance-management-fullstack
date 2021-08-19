@@ -33,9 +33,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Asset.create(req.body)
     .then((asset) => res.json({ msg: "Asset added successfully" }))
-    .catch((err) =>
-      res.status(400).json({ error: "Unable to add this Asset" })
-    );
+    .catch((err) =>  res.status(400).json({ error: "Unable to add this Asset" }));
 });
 
 // @route GET api/assets/:id
@@ -44,9 +42,7 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   Asset.findByIdAndUpdate(req.params.id, req.body)
     .then((asset) => res.json({ msg: "Updated successfully" }))
-    .catch((err) =>
-      res.status(400).json({ error: "Unable to update the Database" })
-    );
+    .catch((err) =>  res.status(400).json({ error: "Unable to update the Database" }));
 });
 
 // @route GET api/assets/:id

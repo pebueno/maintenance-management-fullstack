@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
 import UnitForm from "../../Forms/UnitForm";
+import UserForm from "../../Forms/UserForm";
 
 class showCompanyDetails extends Component {
   constructor(props) {
@@ -81,6 +82,9 @@ class showCompanyDetails extends Component {
         <br />
         <hr /> <br />
         <UnitForm />
+        <br />
+        <hr /> <br />
+        <UserForm />
       </div>
     );
   }

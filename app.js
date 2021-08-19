@@ -4,8 +4,8 @@ const connectDB = require("./config/db");
 var cors = require("cors");
 
 // Routes
-const assets = require("./routes/api/assets");
 const companies = require("./routes/api/companies");
+const assets = require("./routes/api/assets");
 const units = require("./routes/api/units");
 const users = require("./routes/api/users");
 
@@ -23,8 +23,8 @@ app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send("Hello world!"));
 
 // Use Routes
-app.use("/api/assets", assets);
 app.use("/api/companies", companies);
+app.use("/api/assets", assets);
 app.use("/api/units", units);
 app.use("/api/users", users);
 

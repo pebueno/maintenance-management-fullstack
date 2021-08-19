@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
-import UserForm from "../../Forms/UserForm";
+import AssetForm from "../../Forms/AssetForm";
 
-class showunitDetails extends Component {
+class ShowUnitDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,13 +20,13 @@ class showunitDetails extends Component {
         process.env.REACT_APP_API_URL + "/units/" + this.props.match.params.id
       )
       .then((res) => {
-        // console.log("Print-showunitDetails-API-response: " + res.data);
+        // console.log("Print-ShowUnitDetails-API-response: " + res.data);
         this.setState({
           unit: res.data,
         });
       })
       .catch((err) => {
-        console.log("Error from ShowunitDetails");
+        console.log("Error from ShowUnitDetails");
       });
   }
 
@@ -39,7 +39,7 @@ class showunitDetails extends Component {
         window.location.reload();
       })
       .catch((err) => {
-        console.log("Error form ShowunitDetails_deleteClick");
+        console.log("Error form ShowUnitDetails_deleteClick");
       });
   }
 
@@ -75,10 +75,10 @@ class showunitDetails extends Component {
         <Link to={`/edit-unit/${unit._id}`}>Edit Unit</Link>
         <br />
         <hr /> <br />
-        <UserForm />
+        <AssetForm />
       </div>
     );
   }
 }
 
-export default showunitDetails;
+export default ShowUnitDetails;

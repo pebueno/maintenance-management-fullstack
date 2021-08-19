@@ -20,9 +20,12 @@ import ManagePage from "./Components/Pages/management";
 import ShowCompanyDetails from "./Components/Pages/Details/ShowCompanyDetails";
 import ShowUnitDetails from "./Components/Pages/Details/ShowUnitDetails";
 import ShowUserDetails from "./Components/Pages/Details/ShowUserDetails";
+import ShowAssetDetails from "./Components/Pages/Details/ShowAssetDetails";
+
 import UpdateCompanyInfo from "./Components/Pages/Updates/UpdateCompanyInfo";
 import UpdateUnitInfo from "./Components/Pages/Updates/UpdateUnitInfo";
 import UpdateUserInfo from "./Components/Pages/Updates/UpdateUserInfo";
+import UpdateAssetInfo from "./Components/Pages/Updates/UpdateAssetInfo";
 
 const { Header, Content } = Layout;
 
@@ -47,9 +50,11 @@ class App extends Component {
                 />
                 <Route path="/show-unit/:id" component={ShowUnitDetails} />
                 <Route path="/show-user/:id" component={ShowUserDetails} />
+                <Route path="/show-asset/:id" component={ShowAssetDetails} />
                 <Route path="/edit-company/:id" component={UpdateCompanyInfo} />
                 <Route path="/edit-unit/:id" component={UpdateUnitInfo} />
                 <Route path="/edit-user/:id" component={UpdateUserInfo} />
+                <Route path="/edit-asset/:id" component={UpdateAssetInfo} />
                 <Route exact path="/404" component={NotFound} />
                 <Redirect to="/404" />
               </Switch>

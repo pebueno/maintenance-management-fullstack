@@ -40,7 +40,7 @@ class ShowUnitList extends Component {
     return (
       <div>
         <br />
-        <h2>units List</h2>
+        <h2>Units List</h2>
         <hr />
 
         <div>{unitList}</div>

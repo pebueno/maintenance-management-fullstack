@@ -5,6 +5,10 @@ const AssetSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  owner: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     required: true,
@@ -17,12 +21,8 @@ const AssetSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  owner: {
-    type: String,
-    required: true,
-  },
   status: {
-    type: Boolean,
+    type: String,
     required: true,
   },
   health: {

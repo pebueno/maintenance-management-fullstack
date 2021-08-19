@@ -40,7 +40,7 @@ class ShowUserList extends Component {
     return (
       <div>
         <br />
-        <h2>users List</h2>
+        <h2>Users List</h2>
         <hr />
 
         <div>{userList}</div>

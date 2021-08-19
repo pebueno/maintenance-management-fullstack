@@ -23,6 +23,7 @@ const useConstructor = (callBack = () => {}) => {
 const SideMenu = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [companies, setCompanies] = useState([]);
+  const [assets, setAssets] = useState([]);
   const [units, setUnits] = useState([]);
   const [users, setUsers] = useState([]);
 
@@ -62,6 +63,18 @@ const SideMenu = () => {
       })
       .catch((err) => {
         console.log("Error listing the users");
+      });
+  }
+  //Read Operation - List Assets
+  function getAssets() {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/assets")
+      .then((res) => {
+        setAssets(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Error listing the assets");
       });
   }
 
@@ -110,12 +123,26 @@ const SideMenu = () => {
                 <span>management</span>
                 <Link to={"/show-user/" + user._id}></Link>
               </Menu.Item>
+              {assets.map((asset) => {
+                return asset.owner === company.name ? (
+                  <Menu.Item
+                    // title={asset.name}
+                    // key={asset._id}
+                    asset={asset}
+                    key={"/show-asset/" + asset._id}
+                    // key="7"
+                  >
+                    {asset.name}
+                  </Menu.Item>
+                ) : null;
+              })}
             </SubMenu>
           ) : null;
         })}
       </SubMenu>
     ));
   }
+
   // let unitList;
   // if (!units) {
   //   unitList = "there is no unit recored!";
@@ -139,6 +166,7 @@ const SideMenu = () => {
 
   useConstructor(() => {
     getCompanies();
+    getAssets();
     getUnits();
     getUsers();
   });

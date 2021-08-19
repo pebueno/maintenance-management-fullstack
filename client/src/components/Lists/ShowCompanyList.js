@@ -6,6 +6,7 @@ import CompanyCard from "../Cards/CompanyCard";
 // import UnitForm from "./UnitForm";
 import ShowUnitList from "./ShowUnitList";
 import ShowUserList from "./ShowUserList";
+import ShowAssetList from "./ShowAssetList";
 
 class ShowCompanyList extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class ShowCompanyList extends Component {
         <span>{companyList}</span>
         <ShowUnitList />
         <ShowUserList />
+        <ShowAssetList />
       </div>
     );
   }
