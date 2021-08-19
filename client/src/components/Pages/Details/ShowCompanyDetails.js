@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../../App.css";
+// import "../../App.css";
 import axios from "axios";
-import UnitForm from "../../Components/Forms/UnitForm";
+import UnitForm from "../../Forms/UnitForm";
 
 class showCompanyDetails extends Component {
   constructor(props) {

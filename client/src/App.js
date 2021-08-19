@@ -14,13 +14,13 @@ import SideMenu from "./Components/Layout/SideMenu";
 import Footer from "./Components/Layout/Footer";
 
 //Pages
-import MainPage from "./pages";
-import NotFound from "./pages/404";
-import ManagePage from "./pages/management";
-import ShowCompanyDetails from "./pages/Details/ShowCompanyDetails";
-import ShowUnitDetails from "./pages/Details/ShowUnitDetails";
-import UpdateCompanyInfo from "./pages/Update/UpdateCompanyInfo";
-import UpdateUnitInfo from "./pages/Update/UpdateUnitInfo";
+import MainPage from "./Components/Pages";
+import NotFound from "./Components/Pages/404";
+import ManagePage from "./Components/Pages/management";
+import ShowCompanyDetails from "./Components/Pages/Details/ShowCompanyDetails";
+import ShowUnitDetails from "./Components/Pages/Details/ShowUnitDetails";
+import UpdateCompanyInfo from "./Components/Pages/Updates/UpdateCompanyInfo";
+import UpdateUnitInfo from "./Components/Pages/Updates/UpdateUnitInfo";
 
 const { Header, Content } = Layout;
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Form, Input, Button, Select } from "antd";
 
 import axios from "axios";
-import "../../App.css";
+// import "../../App.css";
 const { Option } = Select;
 
 class UpdateUnitInfo extends Component {

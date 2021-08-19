@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import axios from "axios";
-import "../../App.css";
+// import "../../App.css";
 class UpdateCompanyInfo extends Component {
   constructor(props) {
     super(props);
