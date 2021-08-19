@@ -24,6 +24,8 @@ const SideMenu = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [companies, setCompanies] = useState([]);
   const [units, setUnits] = useState([]);
+  const [users, setUsers] = useState([]);
+
   const location = useLocation();
 
   //Read Operation - List Companies
@@ -48,6 +50,18 @@ const SideMenu = () => {
       })
       .catch((err) => {
         console.log("Error listing the units");
+      });
+  }
+  //Read Operation - List Users
+  function getUsers() {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/users")
+      .then((res) => {
+        setUsers(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Error listing the users");
       });
   }
 
@@ -83,10 +97,25 @@ const SideMenu = () => {
             </SubMenu>
           ) : null;
         })}
+        {users.map((user) => {
+          return user.employer === company.name ? (
+            <SubMenu
+              icon={<UserOutlined />}
+              title={user.name}
+              key={user._id}
+              user={user}
+            >
+              <Menu.Item key={"/show-user/" + user._id}>
+                <HomeOutlined />
+                <span>management</span>
+                <Link to={"/show-user/" + user._id}></Link>
+              </Menu.Item>
+            </SubMenu>
+          ) : null;
+        })}
       </SubMenu>
     ));
   }
-
   // let unitList;
   // if (!units) {
   //   unitList = "there is no unit recored!";
@@ -111,6 +140,7 @@ const SideMenu = () => {
   useConstructor(() => {
     getCompanies();
     getUnits();
+    getUsers();
   });
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>

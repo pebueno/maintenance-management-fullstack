@@ -2,56 +2,55 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
-import UserForm from "../../Forms/UserForm";
 
-class showunitDetails extends Component {
+class ShowUserDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      unit: {},
+      user: {},
     };
   }
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
-    //Read Operation - unit Details
+    //Read Operation - user Details
     axios
       .get(
-        process.env.REACT_APP_API_URL + "/units/" + this.props.match.params.id
+        process.env.REACT_APP_API_URL + "/users/" + this.props.match.params.id
       )
       .then((res) => {
-        // console.log("Print-showunitDetails-API-response: " + res.data);
+        // console.log("Print-ShowUserDetails-API-response: " + res.data);
         this.setState({
-          unit: res.data,
+          user: res.data,
         });
       })
       .catch((err) => {
-        console.log("Error from ShowunitDetails");
+        console.log("Error from ShowUserDetails");
       });
   }
 
-  //Delete unit
+  //Delete user
   onDeleteClick(id) {
     axios
-      .delete(process.env.REACT_APP_API_URL + "/units/" + id)
+      .delete(process.env.REACT_APP_API_URL + "/users/" + id)
       .then((res) => {
         this.props.history.push("/");
         window.location.reload();
       })
       .catch((err) => {
-        console.log("Error form ShowunitDetails_deleteClick");
+        console.log("Error form ShowUserDetails_deleteClick");
       });
   }
 
   render() {
-    const unit = this.state.unit;
-    let unitItem = (
+    const user = this.state.user;
+    let userItem = (
       <div>
         <table>
           <tbody>
             <tr>
               <td>Name: </td>
-              <td>{unit.name}</td>
+              <td>{user.name}</td>
             </tr>
           </tbody>
         </table>
@@ -61,24 +60,23 @@ class showunitDetails extends Component {
     return (
       <div>
         <br /> <br />
-        <Link to="/">Show Unit List</Link>
+        <Link to="/">Show User List</Link>
         <br />
         <div>
-          <h1>Unit's Record</h1>
-          <p>View Unit's Info</p>
+          <h1>User's Record</h1>
+          <p>View User's Info</p>
         </div>
-        <div>{unitItem}</div>
-        <button type="button" onClick={this.onDeleteClick.bind(this, unit._id)}>
-          Delete Unit
+        <div>{userItem}</div>
+        <button type="button" onClick={this.onDeleteClick.bind(this, user._id)}>
+          Delete User
         </button>
         <br />
-        <Link to={`/edit-unit/${unit._id}`}>Edit Unit</Link>
+        <Link to={`/edit-user/${user._id}`}>Edit User</Link>
         <br />
         <hr /> <br />
-        <UserForm />
       </div>
     );
   }
 }
 
-export default showunitDetails;
+export default ShowUserDetails;

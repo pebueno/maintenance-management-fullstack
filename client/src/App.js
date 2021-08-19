@@ -19,8 +19,10 @@ import NotFound from "./Components/Pages/404";
 import ManagePage from "./Components/Pages/management";
 import ShowCompanyDetails from "./Components/Pages/Details/ShowCompanyDetails";
 import ShowUnitDetails from "./Components/Pages/Details/ShowUnitDetails";
+import ShowUserDetails from "./Components/Pages/Details/ShowUserDetails";
 import UpdateCompanyInfo from "./Components/Pages/Updates/UpdateCompanyInfo";
 import UpdateUnitInfo from "./Components/Pages/Updates/UpdateUnitInfo";
+import UpdateUserInfo from "./Components/Pages/Updates/UpdateUserInfo";
 
 const { Header, Content } = Layout;
 
@@ -44,8 +46,10 @@ class App extends Component {
                   component={ShowCompanyDetails}
                 />
                 <Route path="/show-unit/:id" component={ShowUnitDetails} />
+                <Route path="/show-user/:id" component={ShowUserDetails} />
                 <Route path="/edit-company/:id" component={UpdateCompanyInfo} />
                 <Route path="/edit-unit/:id" component={UpdateUnitInfo} />
+                <Route path="/edit-user/:id" component={UpdateUserInfo} />
                 <Route exact path="/404" component={NotFound} />
                 <Redirect to="/404" />
               </Switch>
