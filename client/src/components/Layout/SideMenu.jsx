@@ -23,8 +23,10 @@ const useConstructor = (callBack = () => {}) => {
 const SideMenu = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [companies, setCompanies] = useState([]);
+  const [units, setUnits] = useState([]);
   const location = useLocation();
 
+  //Read Operation - List Companies
   function getCompanies() {
     axios
       .get(process.env.REACT_APP_API_URL + "/companies")
@@ -36,6 +38,19 @@ const SideMenu = () => {
         console.log("Error listing the companies");
       });
   }
+  //Read Operation - List Units
+  function getUnits() {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/units")
+      .then((res) => {
+        setUnits(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Error listing the units");
+      });
+  }
+
   let companyList;
   if (!companies) {
     companyList = "there is no company recored!";
@@ -52,11 +67,50 @@ const SideMenu = () => {
           <span>management</span>
           <Link to={"/show-company/" + company._id}></Link>
         </Menu.Item>
+        {units.map((unit) => {
+          return unit.owner === company.name ? (
+            <SubMenu
+              icon={<ShopOutlined />}
+              title={unit.name}
+              key={unit._id}
+              unit={unit}
+            >
+              <Menu.Item key={"/show-unit/" + unit._id}>
+                <HomeOutlined />
+                <span>management</span>
+                <Link to={"/show-unit/" + unit._id}></Link>
+              </Menu.Item>
+            </SubMenu>
+          ) : null;
+        })}
       </SubMenu>
     ));
   }
+
+  // let unitList;
+  // if (!units) {
+  //   unitList = "there is no unit recored!";
+  // } else {
+  //   unitList = units.map((unit, k) => (
+
+  //     <SubMenu
+  //     icon={<ShopOutlined />}
+  //     title={unit.name}
+  //       key={unit._id}
+  //             unit={unit}
+  //     >
+  //       <Menu.Item key={"/show-unit/" + unit._id}>
+  //         <HomeOutlined />
+  //         <span>management</span>
+  //         <Link to={"/show-unit/" + unit._id}></Link>
+  //       </Menu.Item>
+  //     </SubMenu>
+  //   ));
+  // }
+
   useConstructor(() => {
     getCompanies();
+    getUnits();
   });
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>

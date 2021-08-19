@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import axios from "axios";
+import UnitForm from "../../components/UnitForm";
+// import ShowUnitList from "../../components/ShowUnitList";
 
 class showCompanyDetails extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class showCompanyDetails extends Component {
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
+    //Read Operation - Company Details
     axios
       .get(
         process.env.REACT_APP_API_URL +
@@ -30,6 +33,7 @@ class showCompanyDetails extends Component {
       });
   }
 
+  //Delete Company
   onDeleteClick(id) {
     axios
       .delete(process.env.REACT_APP_API_URL + "/companies/" + id)
@@ -65,7 +69,6 @@ class showCompanyDetails extends Component {
         <div>
           <h1>company's Record</h1>
           <p>View company's Info</p>
-          <hr /> <br />
         </div>
         <div>{CompanyItem}</div>
         <button
@@ -77,6 +80,9 @@ class showCompanyDetails extends Component {
         <br />
         <Link to={`/edit-company/${company._id}`}>Edit Company</Link>
         <br />
+        <hr /> <br />
+        <UnitForm />
+        {/* <ShowUnitList /> */}
       </div>
     );
   }

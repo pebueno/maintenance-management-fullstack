@@ -5,13 +5,9 @@ const UnitSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  company: {
+  owner: {
     type: String,
     required: true,
-  },
-  asset: {
-    type: String,
-    required: false,
   },
 });
 

@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 import "../App.css";
 import axios from "axios";
-// import { Link } from "react-router-dom";
-import CompanyCard from "./CompanyCard";
-// import UnitForm from "./UnitForm";
-import ShowUnitList from "./ShowUnitList";
-
-class ShowCompanyList extends Component {
+import { Select } from "antd";
+const { Option } = Select;
+class CompanyOptions extends Component {
   constructor(props) {
     super(props);
     this.state = {
       companies: [],
     };
   }
-
   componentDidMount() {
     //Read Operation - List Companies
-
     axios
       .get(process.env.REACT_APP_API_URL + "/companies")
       .then((res) => {
@@ -28,31 +23,37 @@ class ShowCompanyList extends Component {
         console.log("Error from ShowcompanyList");
       });
   }
-
   render() {
     const companies = this.state.companies;
-    // console.log("Printcompany: " + companies);
     let companyList;
-
     if (!companies) {
       companyList = "there is no company recored!";
     } else {
       companyList = companies.map((company, k) => (
-        <CompanyCard company={company} key={k} />
+        <Option
+          company={company}
+          key={k}
+          value={this.state.owner}
+          onChange={this.onChange}
+        >
+          {company.name}
+        </Option>
       ));
     }
-
     return (
-      <div>
-        <br />
-        <h2>Companies List</h2>
-        <hr />
-
-        <span>{companyList}</span>
-        <ShowUnitList />
-      </div>
+      <Select
+        defaultValue="Freios Supremos"
+        style={{ width: "30%" }}
+        name={["owner"]}
+        value={this.state.owner}
+        onChange={this.onChange}
+      >
+        <Option value="Freios Supremos">
+          <span>Freios Supremos</span>
+        </Option>
+        {companyList}
+      </Select>
     );
   }
 }
-
-export default ShowCompanyList;
+export default CompanyOptions;
