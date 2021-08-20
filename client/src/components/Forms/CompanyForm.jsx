@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Row, Col } from "antd";
 import axios from "axios";
 
 function CompanyForm() {
@@ -16,21 +16,33 @@ function CompanyForm() {
       <Form
         form={form}
         onFinish={handleFinish}
-        layout="inline"
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 24 }}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 14 }}
+        layout="horizontal"
+        // layout="inline"
+        // labelCol={{ span: 6 }}
+        // wrapperCol={{ span: 24 }}
       >
-        <Form.Item name={["name"]}>
-          <Input
-            type="text"
-            // name={["name"]}
-            placeholder="Insert your company name"
-          />
-        </Form.Item>
-
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <Col gutter={24}>
+          <Form.Item
+            name={["name"]}
+            label="Name"
+            rules={[{ required: true, message: "Please insert a name!" }]}
+          >
+            <Input
+              type="text"
+              // name={["name"]}
+              placeholder="Insert your company name"
+            />
+          </Form.Item>
+        </Col>
+        <Row>
+          <Col xl={18} md={18} xs={24} style={{ textAlign: "right" }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </>
   );

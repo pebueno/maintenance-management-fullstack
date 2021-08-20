@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
+import { Table, PageHeader, Space } from "antd";
 
 class ShowUserDetails extends Component {
   constructor(props) {
@@ -44,36 +45,61 @@ class ShowUserDetails extends Component {
 
   render() {
     const user = this.state.user;
-    let userItem = (
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name: </td>
-              <td>{user.name}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
+    const columns = [
+      {
+        title: "Name",
+        render: (text) => (
+          <p>
+            <strong>{user.name}</strong>
+          </p>
+        ),
+      },
+      {
+        title: "Employer",
+        render: () => <p>{user.employer}</p>,
+      },
+      {
+        title: "Actions",
+        key: "action",
+        render: (text, record) => (
+          <Space size="middle">
+            <Link to={`/create`}>Create</Link>
+            <Link to={`/edit-user/${user._id}`}>Edit User</Link>
+            <a onClick={this.onDeleteClick.bind(this, user._id)}>Delete</a>
+          </Space>
+        ),
+      },
+    ];
+
+    const data = [
+      {
+        key: 1,
+        name: "John Brown",
+        age: 32,
+        address: "New York No. 1 Lake Park",
+        description: "user has assets",
+      },
+    ];
 
     return (
       <div>
-        <br /> <br />
-        <Link to="/">Show User List</Link>
-        <br />
-        <div>
-          <h1>User's Record</h1>
-          <p>View User's Info</p>
-        </div>
-        <div>{userItem}</div>
-        <button type="button" onClick={this.onDeleteClick.bind(this, user._id)}>
-          Delete User
-        </button>
-        <br />
-        <Link to={`/edit-user/${user._id}`}>Edit User</Link>
-        <br />
-        <hr /> <br />
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="User Resources"
+          // subTitle="Read and change Asset Data"
+        />
+        <Table
+          pagination={false}
+          columns={columns}
+          // expandable={{
+          //   expandedRowRender: (record) => (
+          //     <p style={{ margin: 0 }}>{record.description}</p>
+          //   ),
+          //   rowExpandable: (record) => record.name !== "Not Expandable",
+          // }}
+          dataSource={data}
+        />
       </div>
     );
   }

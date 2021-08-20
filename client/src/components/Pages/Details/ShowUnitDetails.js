@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
-import AssetForm from "../../Forms/AssetForm";
+import { Table, PageHeader, Space } from "antd";
 
 class ShowUnitDetails extends Component {
   constructor(props) {
@@ -45,37 +45,60 @@ class ShowUnitDetails extends Component {
 
   render() {
     const unit = this.state.unit;
-    let unitItem = (
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name: </td>
-              <td>{unit.name}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
+    const columns = [
+      {
+        title: "Name",
+        render: (text) => (
+          <p>
+            <strong>{unit.name}</strong>
+          </p>
+        ),
+      },
+      {
+        title: "Owner",
+        render: (text) => <p>{unit.owner}</p>,
+      },
+      {
+        title: "Actions",
+        key: "action",
+        render: (text, record) => (
+          <Space size="middle">
+            <Link to={`/create`}>Create</Link>
+            <Link to={`/edit-unit/${unit._id}`}>Edit Unit</Link>
+            <a onClick={this.onDeleteClick.bind(this, unit._id)}>Delete</a>
+          </Space>
+        ),
+      },
+    ];
 
+    const data = [
+      {
+        key: 1,
+        name: "John Brown",
+        age: 32,
+        address: "New York No. 1 Lake Park",
+        description: "Unit has assets",
+      },
+    ];
     return (
       <div>
-        <br /> <br />
-        <Link to="/">Show Unit List</Link>
-        <br />
-        <div>
-          <h1>Unit's Record</h1>
-          <p>View Unit's Info</p>
-        </div>
-        <div>{unitItem}</div>
-        <button type="button" onClick={this.onDeleteClick.bind(this, unit._id)}>
-          Delete Unit
-        </button>
-        <br />
-        <Link to={`/edit-unit/${unit._id}`}>Edit Unit</Link>
-        <br />
-        <hr /> <br />
-        <AssetForm />
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="Unit Resources"
+          // subTitle="Read and change Asset Data"
+        />
+        <Table
+          pagination={false}
+          columns={columns}
+          // expandable={{
+          //   expandedRowRender: (record) => (
+          //     <p style={{ margin: 0 }}>{record.description}</p>
+          //   ),
+          //   rowExpandable: (record) => record.name !== "Not Expandable",
+          // }}
+          dataSource={data}
+        />
       </div>
     );
   }

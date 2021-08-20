@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
-import UnitForm from "../../Forms/UnitForm";
-import UserForm from "../../Forms/UserForm";
+import { Table, PageHeader, Space } from "antd";
 
 class showCompanyDetails extends Component {
   constructor(props) {
@@ -48,43 +47,53 @@ class showCompanyDetails extends Component {
 
   render() {
     const company = this.state.company;
-    let CompanyItem = (
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name: </td>
-              <td>{company.name}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
+
+    const columns = [
+      {
+        title: "Name",
+        render: (text) => <p>{company.name}</p>,
+      },
+      {
+        title: "Actions",
+        key: "action",
+        render: (text, record) => (
+          <Space size="middle">
+            <Link to={`/edit-company/${company._id}`}>Edit Company</Link>
+            <a onClick={this.onDeleteClick.bind(this, company._id)}>Delete</a>
+          </Space>
+        ),
+      },
+    ];
+
+    const data = [
+      {
+        key: 1,
+        name: "John Brown",
+        age: 32,
+        address: "New York No. 1 Lake Park",
+        description: "Company has units and users",
+      },
+    ];
 
     return (
       <div>
-        <br /> <br />
-        <Link to="/">Show company List</Link>
-        <br />
-        <div>
-          <h1>company's Record</h1>
-          <p>View company's Info</p>
-        </div>
-        <div>{CompanyItem}</div>
-        <button
-          type="button"
-          onClick={this.onDeleteClick.bind(this, company._id)}
-        >
-          Delete Company
-        </button>
-        <br />
-        <Link to={`/edit-company/${company._id}`}>Edit Company</Link>
-        <br />
-        <hr /> <br />
-        <UnitForm />
-        <br />
-        <hr /> <br />
-        <UserForm />
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="Company Resources"
+          // subTitle="Read and change Asset Data"
+        />
+        <Table
+          pagination={false}
+          columns={columns}
+          // expandable={{
+          //   expandedRowRender: (record) => (
+          //     <p style={{ margin: 0 }}>{record.description}</p>
+          //   ),
+          //   rowExpandable: (record) => record.name !== "Not Expandable",
+          // }}
+          dataSource={data}
+        />
       </div>
     );
   }

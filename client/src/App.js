@@ -17,6 +17,7 @@ import Footer from "./Components/Layout/Footer";
 import MainPage from "./Components/Pages";
 import NotFound from "./Components/Pages/404";
 import ManagePage from "./Components/Pages/management";
+import CreatePage from "./Components/Pages/create";
 import ShowCompanyDetails from "./Components/Pages/Details/ShowCompanyDetails";
 import ShowUnitDetails from "./Components/Pages/Details/ShowUnitDetails";
 import ShowUserDetails from "./Components/Pages/Details/ShowUserDetails";
@@ -40,10 +41,11 @@ class App extends Component {
               className="site-layout-background"
               style={{ padding: 0, background: "#F0F2F5" }}
             />
-            <Content style={{ margin: "20px 16px" }}>
+            <Content style={{ margin: "20px 28px" }}>
               <Switch>
                 <Route exact path="/" component={MainPage} />
                 <Route path="/management" component={ManagePage} />
+                <Route path="/create" component={CreatePage} />
                 <Route
                   path="/show-company/:id"
                   component={ShowCompanyDetails}

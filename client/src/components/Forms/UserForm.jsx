@@ -1,6 +1,7 @@
 // import React from "react";
 import React, { useState, useRef } from "react";
-import { Form, Input, Button, Select } from "antd";
+// import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Button, Select, Row, Col } from "antd";
 import axios from "axios";
 const { Option } = Select;
 
@@ -48,25 +49,43 @@ function UserForm() {
     getCompanies();
   });
   return (
-    <>
-      <Form form={form} onFinish={handleFinish} layout="inline">
-        <Input.Group compact>
-          <Form.Item name={["employer"]}>
+    <Form
+      form={form}
+      onFinish={handleFinish}
+      // layout="inline"
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 14 }}
+      layout="horizontal"
+    >
+      <Col gutter={24}>
+        <Input.Group>
+          <Form.Item
+            name={["employer"]}
+            label="Employer"
+            rules={[{ required: true, message: "Who is the employer?" }]}
+          >
             <Select defaultValue="Freios Supremos">
               <Option value="Freios Supremos">Freios Supremos</Option>
               {companyList}
             </Select>
           </Form.Item>
-          <Form.Item name={["name"]}>
+          <Form.Item
+            name={["name"]}
+            label="Name"
+            rules={[{ required: true, message: "Please insert a name!" }]}
+          >
             <Input placeholder="Insert your User name" type="text" />
           </Form.Item>
         </Input.Group>
-
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form>
-    </>
+      </Col>
+      <Row>
+        <Col xl={18} md={18} xs={24} style={{ textAlign: "right" }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Col>
+      </Row>
+    </Form>
   );
 }
 

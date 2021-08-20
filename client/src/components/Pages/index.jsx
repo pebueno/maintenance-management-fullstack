@@ -1,9 +1,11 @@
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 import React from "react";
+import { Row, Col } from "antd";
 
-import CompanyForm from "../Forms/CompanyForm";
+// import CompanyForm from "../Forms/CompanyForm";
 import ShowCompanyList from "../Lists/ShowCompanyList";
+import ResponsabilitiesForm from "../Forms/ResponsabilitiesForm";
 
 const MainPage = () => {
   // function getData(){
@@ -29,10 +31,15 @@ const MainPage = () => {
 
   return (
     <>
-      <h2>This is the management page!</h2>
-      <h3>Try to add your company</h3>
-      <CompanyForm />
+      {/* <Row style={{ background: "#FFF", margin: "2%", minWidth: "760px" }}>
+        <Col xl={8} xs={12} style={{ paddingLeft: "15px" }}> */}
+      {/* <CompanyForm /> */}
+      {/* </Col>
+        <Col xl={16} xs={12} style={{ paddingRight: "30px" }}> */}
       <ShowCompanyList />
+      <ResponsabilitiesForm />
+      {/* </Col>
+      </Row> */}
     </>
   );
 };

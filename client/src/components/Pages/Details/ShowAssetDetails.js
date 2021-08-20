@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Tag, Space, List, Typography, Divider, Image } from "antd";
+import { Table, Tag, Space, List, Divider, Image, PageHeader } from "antd";
 import { Link } from "react-router-dom";
 // import "../../App.css";
 import axios from "axios";
@@ -64,10 +64,7 @@ class ShowAssetDetails extends Component {
         title: "Model",
         render: (text) => <p>{asset.model}</p>,
       },
-      // {
-      //   title: "Description",
-      //   render: (text) => <p>{asset.description}</p>,
-      // },
+
       {
         title: "Status",
         dataIndex: "tags",
@@ -84,21 +81,6 @@ class ShowAssetDetails extends Component {
             {asset.status}
           </Tag>
         ),
-        //   render: (tags) => (
-        //     <>
-        //       {tags.map((tag) => {
-        //         let color = tag === "Alerting" ? "yellow" : "green";
-        //         if (tag === "Stopped") {
-        //           color = "volcano";
-        //         }
-        //         return (
-        //           <Tag color={color} key={tag}>
-        //             {asset.status}
-        //           </Tag>
-        //         );
-        //       })}
-        //     </>
-        //   ),
       },
       {
         title: "Health",
@@ -147,33 +129,38 @@ class ShowAssetDetails extends Component {
     }
     return (
       <div>
-        <br /> <br />
-        <Link to="/">Show Asset List</Link>
-        <br />
-        <Divider orientation="left">Asset's Record</Divider>
-        {/* <div>
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="Asset List"
+          // subTitle="Read and change Asset Data"
+        />
+        <div style={{ padding: "5px 25px" }} className="site-layout-background">
+          <Divider orientation="left">Asset's Record</Divider>
+          {/* <div>
           <p>View Asset's Info</p>
         </div>
         <div></div> */}
-        {/* <button
+          {/* <button
           type="button"
           onClick={this.onDeleteClick.bind(this, asset._id)}
         >
           Delete Asset
         </button> */}
-        {/* <br />
+          {/* <br />
         <br />
         <hr /> <br /> */}
-        <AssetImage />
-        {/* <img src={asset.image} alt={asset.name}></img> */}
-        <List
-          header={<div>Description</div>}
-          bordered
-          dataSource={description}
-          renderItem={(item) => <List.Item>{asset.description}</List.Item>}
-        />
-        <Table pagination={false} columns={columns} dataSource={data} />
-        {/* <UserForm /> */}
+          <AssetImage />
+          {/* <img src={asset.image} alt={asset.name}></img> */}
+          <List
+            header={<div>Description:</div>}
+            bordered
+            dataSource={description}
+            renderItem={(item) => <List.Item>{asset.description}</List.Item>}
+          />
+          <Table pagination={false} columns={columns} dataSource={data} />
+          {/* <UserForm /> */}
+        </div>
       </div>
     );
   }

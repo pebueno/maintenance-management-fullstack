@@ -4,10 +4,11 @@ import axios from "axios";
 
 import {
   TrademarkCircleOutlined,
-  HomeOutlined,
+  SettingOutlined,
   ShopOutlined,
   TagsOutlined,
   UserOutlined,
+  HomeOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
@@ -91,8 +92,8 @@ const SideMenu = () => {
         title={company.name}
       >
         <Menu.Item key={"/show-company/" + company._id}>
-          <HomeOutlined />
-          <span>management</span>
+          <SettingOutlined />
+          <span>Config.</span>
           <Link to={"/show-company/" + company._id}></Link>
         </Menu.Item>
         {units.map((unit) => {
@@ -104,8 +105,8 @@ const SideMenu = () => {
               unit={unit}
             >
               <Menu.Item key={"/show-unit/" + unit._id}>
-                <HomeOutlined />
-                <span>management</span>
+                <SettingOutlined />
+                <span>Config.</span>
                 <Link to={"/show-unit/" + unit._id}></Link>
               </Menu.Item>
               {assets.map((asset) => {
@@ -134,8 +135,9 @@ const SideMenu = () => {
               user={user}
             >
               <Menu.Item key={"/show-user/" + user._id}>
-                <HomeOutlined />
-                <span>management</span>
+                <SettingOutlined />
+
+                <span>Config.</span>
                 <Link to={"/show-user/" + user._id}></Link>
               </Menu.Item>
             </SubMenu>
@@ -158,8 +160,8 @@ const SideMenu = () => {
   //             unit={unit}
   //     >
   //       <Menu.Item key={"/show-unit/" + unit._id}>
-  //         <HomeOutlined />
-  //         <span>management</span>
+  //         <SettingOutlined />
+  //         <span>Config.</span>
   //         <Link to={"/show-unit/" + unit._id}></Link>
   //       </Menu.Item>
   //     </SubMenu>
@@ -182,19 +184,25 @@ const SideMenu = () => {
       >
         <Menu.Item key="/">
           <HomeOutlined />
-          <span>Home</span>
+          <span> Home</span>
           <Link to="/"></Link>
         </Menu.Item>
+        <Menu.Item key="/create">
+          <PlusCircleOutlined style={{ fontSize: "20px" }} />
+          <span> ADD</span>
+          <Link to="/create"></Link>
+        </Menu.Item>
+
         <SubMenu
           key="freiosSupremos"
           icon={<TrademarkCircleOutlined />}
           title="Freios Supremos"
-          // link={<Link to="/management" />}
+          // link={<Link to="/Config." />}
         >
-          <Menu.Item key="/management">
-            <HomeOutlined />
-            <span>management</span>
-            <Link to="/management"></Link>
+          <Menu.Item key="/Config.">
+            <SettingOutlined />
+            <span>Config.</span>
+            <Link to="/Config."></Link>
           </Menu.Item>
           <SubMenu key="sub3" icon={<UserOutlined />} title="User">
             <Menu.Item key="1">Emerson</Menu.Item>

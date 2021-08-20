@@ -1,6 +1,6 @@
 // import React from "react";
 import React, { useState, useRef } from "react";
-import { Form, Input, Button, Select, Slider, Radio } from "antd";
+import { Form, Input, Button, Select, Slider, Radio, Row, Col } from "antd";
 import axios from "axios";
 const { Option } = Select;
 
@@ -47,17 +47,18 @@ function AssetForm() {
   useConstructor(() => {
     getUnits();
   });
+
   return (
-    <>
-      <Form
-        form={form}
-        onFinish={handleFinish}
-        //   layout="inline"
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 14 }}
-        layout="horizontal"
-      >
-        {/* <Input.Group> */}
+    <Form
+      form={form}
+      onFinish={handleFinish}
+      //   layout="inline"
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 14 }}
+      layout="horizontal"
+    >
+      {/* <Input.Group> */}
+      <Col gutter={24}>
         <Form.Item
           name={["owner"]}
           label="Owner"
@@ -138,12 +139,15 @@ function AssetForm() {
           <span className="ant-form-text">%</span>
         </Form.Item> */}
         {/* </Input.Group> */}
-
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form>
-    </>
+      </Col>
+      <Row>
+        <Col xl={18} md={18} xs={24} style={{ textAlign: "right" }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Col>
+      </Row>
+    </Form>
   );
 }
 
