@@ -8,6 +8,7 @@ import {
   ShopOutlined,
   TagsOutlined,
   UserOutlined,
+  PlusCircleOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 const { Sider } = Layout;
@@ -107,6 +108,20 @@ const SideMenu = () => {
                 <span>management</span>
                 <Link to={"/show-unit/" + unit._id}></Link>
               </Menu.Item>
+              {assets.map((asset) => {
+                return asset.owner === unit.name ? (
+                  <Menu.Item
+                    // title={asset.name}
+                    // key={asset._id}
+                    asset={asset}
+                    key={"/show-asset/" + asset._id}
+                    // key="7"
+                  >
+                    {asset.name}
+                    <Link to={"/show-asset/" + asset._id}></Link>
+                  </Menu.Item>
+                ) : null;
+              })}
             </SubMenu>
           ) : null;
         })}
@@ -123,19 +138,6 @@ const SideMenu = () => {
                 <span>management</span>
                 <Link to={"/show-user/" + user._id}></Link>
               </Menu.Item>
-              {assets.map((asset) => {
-                return asset.owner === company.name ? (
-                  <Menu.Item
-                    // title={asset.name}
-                    // key={asset._id}
-                    asset={asset}
-                    key={"/show-asset/" + asset._id}
-                    // key="7"
-                  >
-                    {asset.name}
-                  </Menu.Item>
-                ) : null;
-              })}
             </SubMenu>
           ) : null;
         })}

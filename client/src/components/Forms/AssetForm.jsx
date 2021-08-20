@@ -21,31 +21,31 @@ function AssetForm() {
     form.resetFields();
     window.location.reload();
   }
-  const [companies, setCompanies] = useState([]);
+  const [units, setUnits] = useState([]);
 
-  function getCompanies() {
+  function getUnits() {
     axios
-      .get(process.env.REACT_APP_API_URL + "/companies")
+      .get(process.env.REACT_APP_API_URL + "/units")
       .then((res) => {
-        setCompanies(res.data);
+        setUnits(res.data);
         // console.log(res.data);
       })
       .catch((err) => {
-        console.log("Error listing the companies");
+        console.log("Error listing the units");
       });
   }
-  let companyList;
-  if (!companies) {
-    companyList = "there is no company recored!";
+  let unitList;
+  if (!units) {
+    unitList = "there is no unit recored!";
   } else {
-    companyList = companies.map((company, k) => (
-      <Option company={company} key={company._id} value={company.name}>
-        {company.name}
+    unitList = units.map((unit, k) => (
+      <Option unit={unit} key={unit._id} value={unit.name}>
+        {unit.name}
       </Option>
     ));
   }
   useConstructor(() => {
-    getCompanies();
+    getUnits();
   });
   return (
     <>
@@ -63,15 +63,15 @@ function AssetForm() {
           label="Owner"
           rules={[{ required: true, message: "Who owns this asset?" }]}
         >
-          <Select defaultValue="Freios Supremos">
-            <Option value="Freios Supremos">Freios Supremos</Option>
-            {companyList}
+          <Select defaultValue="West Industry">
+            <Option value="West Industry">West Industry</Option>
+            {unitList}
           </Select>
         </Form.Item>
         <Form.Item
           name={["name"]}
           label="Name"
-          rules={[{ required: true, message: "Please tell the name!" }]}
+          rules={[{ required: true, message: "Please insert a name!" }]}
         >
           <Input placeholder="Insert your Asset's name" type="text" />
         </Form.Item>

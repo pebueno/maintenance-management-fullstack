@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import { Form, Input, Button, Select } from "antd";
-import { Form, Input, Button, Select, Slider, Radio, InputNumber } from "antd";
+import { Form, Input, Button, Select, Slider, Radio } from "antd";
 
 import axios from "axios";
 // import "../../App.css";
