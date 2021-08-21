@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Table, Tag, Space, List, Divider, Image, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-// import "../../App.css";
 import axios from "axios";
-// import AssetForm from "../../Forms/AssetForm";
 
 class ShowAssetDetails extends Component {
   constructor(props) {
@@ -92,7 +90,9 @@ class ShowAssetDetails extends Component {
         render: (text, record) => (
           <Space size="middle">
             <Link to={`/edit-asset/${asset._id}`}>Edit Asset</Link>
-            <a onClick={this.onDeleteClick.bind(this, asset._id)}>Delete</a>
+            <Link onClick={this.onDeleteClick.bind(this, asset._id)}>
+              Delete
+            </Link>
           </Space>
         ),
       },
@@ -106,20 +106,6 @@ class ShowAssetDetails extends Component {
         address: "New York No. 1 Lake Park",
         tags: ["nice"],
       },
-      // {
-      //   key: "2",
-      //   name: "Jim Green",
-      //   age: 42,
-      //   address: "London No. 1 Lake Park",
-      //   tags: ["loser"],
-      // },
-      // {
-      //   key: "3",
-      //   name: "Joe Black",
-      //   age: 32,
-      //   address: "Sidney No. 1 Lake Park",
-      //   tags: ["cool"],
-      // },
     ];
 
     const description = ["Japanese princess to wed commoner."];
@@ -133,25 +119,10 @@ class ShowAssetDetails extends Component {
           className="site-page-header"
           onBack={() => window.history.back()}
           title="Asset List"
-          // subTitle="Read and change Asset Data"
         />
         <div style={{ padding: "5px 25px" }} className="site-layout-background">
           <Divider orientation="left">Asset's Record</Divider>
-          {/* <div>
-          <p>View Asset's Info</p>
-        </div>
-        <div></div> */}
-          {/* <button
-          type="button"
-          onClick={this.onDeleteClick.bind(this, asset._id)}
-        >
-          Delete Asset
-        </button> */}
-          {/* <br />
-        <br />
-        <hr /> <br /> */}
           <AssetImage />
-          {/* <img src={asset.image} alt={asset.name}></img> */}
           <List
             header={<div>Description:</div>}
             bordered
@@ -159,7 +130,6 @@ class ShowAssetDetails extends Component {
             renderItem={(item) => <List.Item>{asset.description}</List.Item>}
           />
           <Table pagination={false} columns={columns} dataSource={data} />
-          {/* <UserForm /> */}
         </div>
       </div>
     );

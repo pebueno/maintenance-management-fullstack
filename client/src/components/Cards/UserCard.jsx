@@ -9,11 +9,9 @@ const UserCard = (props) => {
   return (
     <Row>
       <Col span={12}>
-        <h5>Employer</h5>
         <p>{user.employer}</p>
       </Col>
       <Col span={12}>
-        <h5>user</h5>
         <Link to={`/show-user/${user._id}`}>
           <p>{user.name}</p>
         </Link>

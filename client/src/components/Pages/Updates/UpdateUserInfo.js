@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Form, Input, Button, Select } from "antd";
-
+import { Form, Input, Button, Select, PageHeader, Row, Col } from "antd";
 import axios from "axios";
-// import "../../App.css";
 const { Option } = Select;
 
 class UpdateUserInfo extends Component {
@@ -59,47 +56,53 @@ class UpdateUserInfo extends Component {
 
   render() {
     return (
-      <div>
-        <Link to={"/show-user/" + this.props.match.params.id}>← Show User</Link>
-        <br />
-        <br />
-
-        <Link to="/">Show User List</Link>
-        <br />
-        <h1>Edit User</h1>
-        <br />
-        <p>Update User's Info</p>
-
-        <Form
-          noValidate
-          onFinish={this.onFinish}
-          layout="inline"
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Form.Item>
-            <Form.Item
-            //   name={["employer"]}
-            >
-              <Select>
-                <Option value={this.state.employer}>
-                  {this.state.employer}
-                </Option>
-              </Select>
-            </Form.Item>
-            <Input
-              type="text"
-              placeholder="User name"
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
-            />
-          </Form.Item>
-          <Button type="primary" htmlType="submit">
-            Update User
-          </Button>
-        </Form>
-      </div>
+      <>
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="Edit User"
+          subTitle="Edit the user information"
+        />
+        <div className="space30"></div>
+        <Row gutter={[24, 24]}>
+          <Col className="gutter-row" span={12}>
+            <div className="whiteBox shadow">
+              <div className="pad20">
+                <Form
+                  noValidate
+                  onFinish={this.onFinish}
+                  labelCol={{ span: 4 }}
+                  wrapperCol={{ span: 14 }}
+                >
+                  <Form.Item label="Employer">
+                    <Select>
+                      <Option value={this.state.employer}>
+                        {this.state.employer}
+                      </Option>
+                    </Select>
+                  </Form.Item>
+                  <Form.Item label="Name">
+                    <Input
+                      type="text"
+                      placeholder="User name"
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.onChange}
+                    />
+                  </Form.Item>
+                  <Row>
+                    <Col xl={18} md={18} xs={24} style={{ textAlign: "right" }}>
+                      <Button type="primary" htmlType="submit">
+                        Update User
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </>
     );
   }
 }

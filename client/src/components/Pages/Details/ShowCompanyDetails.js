@@ -59,7 +59,9 @@ class showCompanyDetails extends Component {
         render: (text, record) => (
           <Space size="middle">
             <Link to={`/edit-company/${company._id}`}>Edit Company</Link>
-            <a onClick={this.onDeleteClick.bind(this, company._id)}>Delete</a>
+            <Link onClick={this.onDeleteClick.bind(this, company._id)}>
+              Delete
+            </Link>
           </Space>
         ),
       },
@@ -81,19 +83,8 @@ class showCompanyDetails extends Component {
           className="site-page-header"
           onBack={() => window.history.back()}
           title="Company Resources"
-          // subTitle="Read and change Asset Data"
         />
-        <Table
-          pagination={false}
-          columns={columns}
-          // expandable={{
-          //   expandedRowRender: (record) => (
-          //     <p style={{ margin: 0 }}>{record.description}</p>
-          //   ),
-          //   rowExpandable: (record) => record.name !== "Not Expandable",
-          // }}
-          dataSource={data}
-        />
+        <Table pagination={false} columns={columns} dataSource={data} />
       </div>
     );
   }

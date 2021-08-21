@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-// import "../App.css";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+import { Row, Col } from "antd";
 import AssetCard from "../Cards/AssetCard";
 
 class ShowAssetList extends Component {
@@ -28,6 +27,7 @@ class ShowAssetList extends Component {
 
   render() {
     const assets = this.state.assets;
+
     // console.log("Printasset: " + assets);
     let assetList;
 
@@ -36,15 +36,31 @@ class ShowAssetList extends Component {
     } else {
       assetList = assets.map((asset, k) => <AssetCard asset={asset} key={k} />);
     }
-
     return (
-      <div>
-        <br />
-        <h2>Assets List</h2>
-        <hr />
+      <>
+        <Row style={{ background: "#FAFAFA", padding: "15px" }}>
+          <Col span={6}>
+            <h4>Name</h4>
+          </Col>
 
-        <div>{assetList}</div>
-      </div>
+          <Col span={5}>
+            <h4>Owner</h4>
+          </Col>
+
+          <Col span={5}>
+            <h4>Model</h4>
+          </Col>
+
+          <Col span={5}>
+            <h4>Status</h4>
+          </Col>
+
+          <Col span={3}>
+            <h4>Health</h4>
+          </Col>
+        </Row>
+        <div style={{ paddingLeft: "15px" }}>{assetList}</div>
+      </>
     );
   }
 }

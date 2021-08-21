@@ -23,23 +23,23 @@ function ResponsabilitiesForm() {
     // window.location.reload();
   }
 
-  const [companies, setCompanies] = useState([]);
+  // const [companies, setCompanies] = useState([]);
   const [assets, setAssets] = useState([]);
   const [units, setUnits] = useState([]);
   const [users, setUsers] = useState([]);
 
   //Read Operation - List Companies
-  function getCompanies() {
-    axios
-      .get(process.env.REACT_APP_API_URL + "/companies")
-      .then((res) => {
-        setCompanies(res.data);
-        // console.log(res.data);
-      })
-      .catch((err) => {
-        console.log("Error listing the companies");
-      });
-  }
+  // function getCompanies() {
+  //   axios
+  //     .get(process.env.REACT_APP_API_URL + "/companies")
+  //     .then((res) => {
+  //       setCompanies(res.data);
+  //       // console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error listing the companies");
+  //     });
+  // }
   //Read Operation - List Units
   function getUnits() {
     axios
@@ -76,16 +76,16 @@ function ResponsabilitiesForm() {
         console.log("Error listing the assets");
       });
   }
-  let companyList;
-  if (!companies) {
-    companyList = "there is no company recored!";
-  } else {
-    companyList = companies.map((company, k) => (
-      <Option company={company} key={company._id} value={company.name}>
-        {company.name}
-      </Option>
-    ));
-  }
+  // let companyList;
+  // if (!companies) {
+  //   companyList = "there is no company recored!";
+  // } else {
+  //   companyList = companies.map((company, k) => (
+  //     <Option company={company} key={company._id} value={company.name}>
+  //       {company.name}
+  //     </Option>
+  //   ));
+  // }
   let unitList;
   if (units) {
     unitList = units.map((unit, k) => (
@@ -115,7 +115,6 @@ function ResponsabilitiesForm() {
         <Form
           form={form}
           onFinish={handleFinish}
-          // layout="inline"
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           layout="horizontal"
@@ -153,7 +152,7 @@ function ResponsabilitiesForm() {
   }
 
   useConstructor(() => {
-    getCompanies();
+    // getCompanies();
     getAssets();
     getUnits();
     getUsers();

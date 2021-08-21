@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Form, Input, Button, Select } from "antd";
-
+import { Form, Input, Button, Select, PageHeader, Row, Col } from "antd";
 import axios from "axios";
-// import "../../App.css";
 const { Option } = Select;
 
 class UpdateUnitInfo extends Component {
@@ -59,45 +56,53 @@ class UpdateUnitInfo extends Component {
 
   render() {
     return (
-      <div>
-        <Link to={"/show-unit/" + this.props.match.params.id}>← Show Unit</Link>
-        <br />
-        <br />
-
-        <Link to="/">Show Unit List</Link>
-        <br />
-        <h1>Edit Unit</h1>
-        <br />
-        <p>Update Unit's Info</p>
-
-        <Form
-          noValidate
-          onFinish={this.onFinish}
-          layout="inline"
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Form.Item>
-            <Form.Item
-            //   name={["owner"]}
-            >
-              <Select>
-                <Option value={this.state.owner}>{this.state.owner}</Option>
-              </Select>
-            </Form.Item>
-            <Input
-              type="text"
-              placeholder="Unit name"
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
-            />
-          </Form.Item>
-          <Button type="primary" htmlType="submit">
-            Update Unit
-          </Button>
-        </Form>
-      </div>
+      <>
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="Edit Unit"
+          subTitle="Edit the unit information"
+        />
+        <div className="space30"></div>
+        <Row gutter={[24, 24]}>
+          <Col className="gutter-row" span={12}>
+            <div className="whiteBox shadow">
+              <div className="pad20">
+                <Form
+                  noValidate
+                  onFinish={this.onFinish}
+                  labelCol={{ span: 4 }}
+                  wrapperCol={{ span: 14 }}
+                >
+                  <Form.Item label="Owner">
+                    <Select>
+                      <Option value={this.state.owner}>
+                        {this.state.owner}
+                      </Option>
+                    </Select>
+                  </Form.Item>
+                  <Form.Item label="Name">
+                    <Input
+                      type="text"
+                      placeholder="Unit name"
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.onChange}
+                    />
+                  </Form.Item>
+                  <Row>
+                    <Col xl={18} md={18} xs={24} style={{ textAlign: "right" }}>
+                      <Button type="primary" htmlType="submit">
+                        Update Unit
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </>
     );
   }
 }

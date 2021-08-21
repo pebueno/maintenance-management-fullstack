@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Table } from "antd";
+
 // import "../App.css";
 import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -36,15 +38,26 @@ class ShowUnitList extends Component {
     } else {
       unitList = units.map((unit, k) => <UnitCard unit={unit} key={k} />);
     }
+    //Data for Tables
+    const dataSource = [
+      {
+        name: "Pedro",
+      },
+    ];
+
+    const columns = [
+      {
+        title: "Owner",
+        // dataIndex: "client",
+        render: () => <span>{unitList}</span>,
+      },
+      {
+        title: "Unit",
+      },
+    ];
 
     return (
-      <div>
-        <br />
-        <h2>Units List</h2>
-        <hr />
-
-        <div>{unitList}</div>
-      </div>
+      <Table columns={columns} dataSource={dataSource} pagination={false} />
     );
   }
 }

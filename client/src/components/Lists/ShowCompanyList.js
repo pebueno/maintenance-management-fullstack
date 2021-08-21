@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import { Table } from "antd";
+
 // import "../App.css";
 import axios from "axios";
 // import { Link } from "react-router-dom";
 import CompanyCard from "../Cards/CompanyCard";
 // import UnitForm from "./UnitForm";
-import ShowUnitList from "./ShowUnitList";
-import ShowUserList from "./ShowUserList";
-import ShowAssetList from "./ShowAssetList";
 
 class ShowCompanyList extends Component {
   constructor(props) {
@@ -44,17 +43,23 @@ class ShowCompanyList extends Component {
       ));
     }
 
-    return (
-      <div>
-        <br />
-        <h2>Companies List</h2>
-        <hr />
+    //Data for Tables
+    const dataSource = [
+      {
+        name: "Pedro",
+      },
+    ];
 
-        <span>{companyList}</span>
-        <ShowUnitList />
-        <ShowUserList />
-        <ShowAssetList />
-      </div>
+    const columns = [
+      {
+        title: "Company",
+        // dataIndex: "client",
+        render: () => <span>{companyList}</span>,
+      },
+    ];
+
+    return (
+      <Table columns={columns} dataSource={dataSource} pagination={false} />
     );
   }
 }

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, PageHeader, Row, Col } from "antd";
 import axios from "axios";
-// import "../../App.css";
+
 class UpdateCompanyInfo extends Component {
   constructor(props) {
     super(props);
@@ -57,40 +56,46 @@ class UpdateCompanyInfo extends Component {
 
   render() {
     return (
-      <div>
-        <Link to={"/show-company/" + this.props.match.params.id}>
-          ← Show Company
-        </Link>
-        <br />
-        <br />
-
-        <Link to="/">Show Company List</Link>
-        <br />
-        <h1>Edit Company</h1>
-        <br />
-        <p>Update Company's Info</p>
-
-        <Form
-          noValidate
-          onFinish={this.onFinish}
-          layout="inline"
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Form.Item>
-            <Input
-              type="text"
-              placeholder="Company name"
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
-            />
-          </Form.Item>
-          <Button type="primary" htmlType="submit">
-            Update Company
-          </Button>
-        </Form>
-      </div>
+      <>
+        <PageHeader
+          className="site-page-header"
+          onBack={() => window.history.back()}
+          title="Edit Company"
+          subTitle="Edit the company information"
+        />
+        <div className="space30"></div>
+        <Row gutter={[24, 24]}>
+          <Col className="gutter-row" span={12}>
+            <div className="whiteBox shadow">
+              <div className="pad20">
+                <Form
+                  noValidate
+                  onFinish={this.onFinish}
+                  labelCol={{ span: 4 }}
+                  wrapperCol={{ span: 14 }}
+                >
+                  <Form.Item label="Name">
+                    <Input
+                      type="text"
+                      placeholder="Company name"
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.onChange}
+                    />
+                  </Form.Item>
+                  <Row>
+                    <Col xl={18} md={18} xs={24} style={{ textAlign: "right" }}>
+                      <Button type="primary" htmlType="submit">
+                        Update Company
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </>
     );
   }
 }

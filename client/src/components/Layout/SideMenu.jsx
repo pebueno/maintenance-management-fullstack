@@ -111,13 +111,7 @@ const SideMenu = () => {
               </Menu.Item>
               {assets.map((asset) => {
                 return asset.owner === unit.name ? (
-                  <Menu.Item
-                    // title={asset.name}
-                    // key={asset._id}
-                    asset={asset}
-                    key={"/show-asset/" + asset._id}
-                    // key="7"
-                  >
+                  <Menu.Item asset={asset} key={"/show-asset/" + asset._id}>
                     {asset.name}
                     <Link to={"/show-asset/" + asset._id}></Link>
                   </Menu.Item>
@@ -147,27 +141,6 @@ const SideMenu = () => {
     ));
   }
 
-  // let unitList;
-  // if (!units) {
-  //   unitList = "there is no unit recored!";
-  // } else {
-  //   unitList = units.map((unit, k) => (
-
-  //     <SubMenu
-  //     icon={<ShopOutlined />}
-  //     title={unit.name}
-  //       key={unit._id}
-  //             unit={unit}
-  //     >
-  //       <Menu.Item key={"/show-unit/" + unit._id}>
-  //         <SettingOutlined />
-  //         <span>Config.</span>
-  //         <Link to={"/show-unit/" + unit._id}></Link>
-  //       </Menu.Item>
-  //     </SubMenu>
-  //   ));
-  // }
-
   useConstructor(() => {
     getCompanies();
     getAssets();
@@ -178,7 +151,6 @@ const SideMenu = () => {
     <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
       <Menu
         theme="dark"
-        // defaultSelectedKeys={["1"]}
         defaultSelectedKeys={[location.pathname]}
         mode="inline"
       >
@@ -197,7 +169,6 @@ const SideMenu = () => {
           key="freiosSupremos"
           icon={<TrademarkCircleOutlined />}
           title="Freios Supremos"
-          // link={<Link to="/Config." />}
         >
           <Menu.Item key="/Config.">
             <SettingOutlined />

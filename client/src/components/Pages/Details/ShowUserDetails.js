@@ -65,7 +65,9 @@ class ShowUserDetails extends Component {
           <Space size="middle">
             <Link to={`/create`}>Create</Link>
             <Link to={`/edit-user/${user._id}`}>Edit User</Link>
-            <a onClick={this.onDeleteClick.bind(this, user._id)}>Delete</a>
+            <Link onClick={this.onDeleteClick.bind(this, user._id)}>
+              Delete
+            </Link>
           </Space>
         ),
       },
@@ -87,19 +89,8 @@ class ShowUserDetails extends Component {
           className="site-page-header"
           onBack={() => window.history.back()}
           title="User Resources"
-          // subTitle="Read and change Asset Data"
         />
-        <Table
-          pagination={false}
-          columns={columns}
-          // expandable={{
-          //   expandedRowRender: (record) => (
-          //     <p style={{ margin: 0 }}>{record.description}</p>
-          //   ),
-          //   rowExpandable: (record) => record.name !== "Not Expandable",
-          // }}
-          dataSource={data}
-        />
+        <Table pagination={false} columns={columns} dataSource={data} />
       </div>
     );
   }

@@ -65,7 +65,9 @@ class ShowUnitDetails extends Component {
           <Space size="middle">
             <Link to={`/create`}>Create</Link>
             <Link to={`/edit-unit/${unit._id}`}>Edit Unit</Link>
-            <a onClick={this.onDeleteClick.bind(this, unit._id)}>Delete</a>
+            <Link onClick={this.onDeleteClick.bind(this, unit._id)}>
+              Delete
+            </Link>
           </Space>
         ),
       },

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Table } from "antd";
+
 // import "../App.css";
 import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -36,15 +38,25 @@ class ShowUserList extends Component {
     } else {
       userList = users.map((user, k) => <UserCard user={user} key={k} />);
     }
+    //Data for Tables
+    const dataSource = [
+      {
+        name: "Pedro",
+      },
+    ];
 
+    const columns = [
+      {
+        title: "Employer",
+        // dataIndex: "client",
+        render: () => <span>{userList}</span>,
+      },
+      {
+        title: "User",
+      },
+    ];
     return (
-      <div>
-        <br />
-        <h2>Users List</h2>
-        <hr />
-
-        <div>{userList}</div>
-      </div>
+      <Table columns={columns} dataSource={dataSource} pagination={false} />
     );
   }
 }

@@ -1,27 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { Card } from "antd";
-
-const { Meta } = Card;
+import { Row, Col } from "antd";
 
 const AssetCard = (props) => {
   const asset = props.asset;
 
   return (
-    <Card
-      hoverable
-      style={{ width: 240 }}
-      cover={<img alt={asset.name} src={asset.image} />}
-    >
-      <Link to={`/show-asset/${asset._id}`}>
-        <Meta title={asset.name} description={asset.description} />
-      </Link>
-      <h4>{asset.owner}</h4>
-      <p>{asset.model}</p>
-      <p>{asset.status}</p>
-      <p>{asset.health}</p>
-    </Card>
+    <Row style={{ padding: "15px 0" }}>
+      <Col span={6}>
+        <Link to={`/show-asset/${asset._id}`}>{asset.name}</Link>
+      </Col>
+
+      <Col span={5}>
+        <span>{asset.owner}</span>
+      </Col>
+
+      <Col span={5}>
+        <span>{asset.model}</span>
+      </Col>
+
+      <Col span={5}>
+        <span>{asset.status}</span>
+      </Col>
+
+      <Col span={3}>
+        <span>{asset.health}%</span>
+      </Col>
+    </Row>
   );
 };
 
