@@ -1,6 +1,6 @@
 # maintenance-management-fullstack Versão 0.0.1
 
-[![GitHub stars](https://img.shields.io/github/stars/pebueno/maintenance-management-fullstack)](https://github.com/pebueno/maintenance-management-fullstack/stargazers) [![GitHub forks](https://img.shields.io/github/forks/pebueno/maintenance-management-fullstack)](https://github.com/pebueno/maintenance-management-fullstack/network) [![GitHub issues](https://img.shields.io/github/issues/pebueno/maintenance-management-fullstack)](https://github.com/pebueno/maintenance-management-fullstack/issues)
+[![GitHub stars](https://img.shields.io/github/stars/pebueno/maintenance-management-fullstack)](https://github.com/pebueno/maintenance-management-fullstack/stargazers) [![GitHub forks](https://img.shields.io/github/forks/pebueno/maintenance-management-fullstack)](https://github.com/pebueno/maintenance-management-fullstack/network) [![GitHub issues](https://img.shields.io/github/issues/pebueno/maintenance-management-fullstack)](https://github.com/pebueno/maintenance-management-fullstack/issues) [![GitHub Page](https://img.shields.io/badge/Try%20Out-this--app-red)](https://murmuring-badlands-21864.herokuapp.com/)
 
 # Funcionando:
 
@@ -8,8 +8,6 @@
 - Highcharts Dashboards;
 - Functional components;
 - Módulos do Ant Design;
-
-[![GitHub Page](https://img.shields.io/badge/Try%20Out-this--app-red)](https://murmuring-badlands-21864.herokuapp.com/)
 
 ## Instalação e Configuração
 
