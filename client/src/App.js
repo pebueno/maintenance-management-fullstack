@@ -36,7 +36,7 @@ class App extends Component {
       <Router>
         <Layout style={{ minHeight: "100vh" }}>
           <SideMenu />
-          <Layout>
+          <Layout className="siteBorder">
             <Header
               className="site-layout-background"
               style={{ padding: 0, background: "#F0F2F5" }}

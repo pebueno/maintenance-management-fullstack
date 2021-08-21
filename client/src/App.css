@@ -8,3 +8,14 @@
 .site-layout-background {
   background: #fff;
 }
+@media screen and (min-width: 1400px) {
+  .siteBorder {
+    padding: 0 200px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .siteBorder {
+    padding: 0 20px;
+  }
+}

@@ -27,7 +27,8 @@
     "React.js",
     "Express.js",
     "Node.js",
-    "Highcharts"
+    "Highcharts",
+    "Ant-Design"
   ],
   "author": "Pedro Ivo Bueno Sartório",
   "license": "ISC",
