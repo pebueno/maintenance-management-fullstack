@@ -9,6 +9,8 @@
 - Functional components;
 - Módulos do Ant Design;
 
+[![GitHub Page](https://img.shields.io/badge/Try%20Out-this--app-red)](https://murmuring-badlands-21864.herokuapp.com/)
+
 ## Instalação e Configuração
 
 ---
@@ -19,7 +21,7 @@ git clone https://github.com/pebueno/maintenance-management-fullstack.git
 
 npm install
 
-npm run server
+npm start
 
 ```
 
@@ -28,7 +30,7 @@ npm run server
 ## Fotos
 
 Interface
-![Interface](https://github.com/pebueno/maintenance-management-fullstack/blob/master/assets/screenshots/Dashboard%Inicial.png?raw=true "Interface")
+![Interface](https://github.com/pebueno/maintenance-management-fullstack/blob/master/assets/screenshots/Dashboard%20Inicial.png?raw=true "Interface")
 
 # 👍 Contribuição
 

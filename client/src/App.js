@@ -14,7 +14,7 @@ import SideMenu from "./Components/Layout/SideMenu";
 import Footer from "./Components/Layout/Footer";
 
 //Pages
-import MainPage from "./Components/Pages";
+import MainPage from "./Components/Pages/index";
 import NotFound from "./Components/Pages/404";
 import ManagePage from "./Components/Pages/management";
 import CreatePage from "./Components/Pages/create";
