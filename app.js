@@ -30,7 +30,6 @@ app.use("/api/units", units);
 app.use("/api/users", users);
 
 // Accessing the path module
-
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
