@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-// import { Table } from "antd";
 import { Row, Col, Divider } from "antd";
 
-// import "../App.css";
 import axios from "axios";
-// import { Link } from "react-router-dom";
 import CompanyCard from "../Cards/CompanyCard";
-// import UnitForm from "./UnitForm";
 
 class ShowCompanyList extends Component {
   constructor(props) {
@@ -18,7 +14,6 @@ class ShowCompanyList extends Component {
 
   componentDidMount() {
     //Read Operation - List Companies
-
     axios
       .get(process.env.REACT_APP_API_URL + "/companies")
       .then((res) => {
@@ -50,8 +45,11 @@ class ShowCompanyList extends Component {
           style={{ background: "#FAFAFA", padding: "15px" }}
           className="tableTitle"
         >
-          <Col span={6}>
+          <Col span={20}>
             <h4>Name</h4>
+          </Col>
+          <Col span={4}>
+            <Divider type="vertical" />
           </Col>
         </Row>
         <div style={{ paddingLeft: "15px" }}>{companyList}</div>

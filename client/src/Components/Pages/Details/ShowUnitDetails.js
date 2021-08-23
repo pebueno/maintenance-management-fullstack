@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import "../../App.css";
 import axios from "axios";
 import { Table, PageHeader, Space } from "antd";
+import { onDeleteUnit } from "../../Utils/Delete";
 
 class ShowUnitDetails extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class ShowUnitDetails extends Component {
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
+    console.log("Print id: " + this.props.match.params.id);
     //Read Operation - unit Details
     axios
       .get(
@@ -27,19 +27,6 @@ class ShowUnitDetails extends Component {
       })
       .catch((err) => {
         console.log("Error from ShowUnitDetails");
-      });
-  }
-
-  //Delete unit
-  onDeleteClick(id) {
-    axios
-      .delete(process.env.REACT_APP_API_URL + "/units/" + id)
-      .then((res) => {
-        this.props.history.push("/");
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log("Error form ShowUnitDetails_deleteClick");
       });
   }
 
@@ -65,7 +52,11 @@ class ShowUnitDetails extends Component {
           <Space size="middle">
             <Link to={`/create`}>Create</Link>
             <Link to={`/edit-unit/${unit._id}`}>Edit Unit</Link>
-            <Link onClick={this.onDeleteClick.bind(this, unit._id)}>
+            <Link
+              onClick={() => {
+                onDeleteUnit(this.props.match.params.id, this.props.history);
+              }}
+            >
               Delete
             </Link>
           </Space>
@@ -88,19 +79,8 @@ class ShowUnitDetails extends Component {
           className="site-page-header"
           onBack={() => window.history.back()}
           title="Unit Resources"
-          // subTitle="Read and change Asset Data"
         />
-        <Table
-          pagination={false}
-          columns={columns}
-          // expandable={{
-          //   expandedRowRender: (record) => (
-          //     <p style={{ margin: 0 }}>{record.description}</p>
-          //   ),
-          //   rowExpandable: (record) => record.name !== "Not Expandable",
-          // }}
-          dataSource={data}
-        />
+        <Table pagination={false} columns={columns} dataSource={data} />
       </div>
     );
   }

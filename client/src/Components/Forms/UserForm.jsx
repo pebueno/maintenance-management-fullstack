@@ -1,6 +1,4 @@
-// import React from "react";
 import React, { useState, useRef } from "react";
-// import { Form, Input, Button, Select } from "antd";
 import { Form, Input, Button, Select, Row, Col } from "antd";
 import axios from "axios";
 const { Option } = Select;
@@ -16,8 +14,7 @@ const useConstructor = (callBack = () => {}) => {
 function UserForm() {
   const [form] = Form.useForm();
   function handleFinish(data) {
-    console.log(data);
-
+    // console.log(data);
     axios.post(process.env.REACT_APP_API_URL + "/users", data);
     form.resetFields();
     window.location.reload();
@@ -52,7 +49,6 @@ function UserForm() {
     <Form
       form={form}
       onFinish={handleFinish}
-      // layout="inline"
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 14 }}
       layout="horizontal"
@@ -64,10 +60,7 @@ function UserForm() {
             label="Employer"
             rules={[{ required: true, message: "Who is the employer?" }]}
           >
-            <Select defaultValue="Freios Supremos">
-              <Option value="Freios Supremos">Freios Supremos</Option>
-              {companyList}
-            </Select>
+            <Select>{companyList}</Select>
           </Form.Item>
           <Form.Item
             name={["name"]}

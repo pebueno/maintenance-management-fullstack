@@ -164,38 +164,6 @@ const SideMenu = () => {
           <span> ADD</span>
           <Link to="/create"></Link>
         </Menu.Item>
-
-        <SubMenu
-          key="freiosSupremos"
-          icon={<TrademarkCircleOutlined />}
-          title="Freios Supremos"
-        >
-          <Menu.Item key="/Config.">
-            <SettingOutlined />
-            <span>Config.</span>
-            <Link to="/Config."></Link>
-          </Menu.Item>
-          <SubMenu key="sub3" icon={<UserOutlined />} title="User">
-            <Menu.Item key="1">Emerson</Menu.Item>
-            <Menu.Item key="2">Roberta</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub4" icon={<ShopOutlined />} title="Unit">
-            <SubMenu key="sub5" icon={<TagsOutlined />} title="West Industry">
-              <Menu.Item key="3">Transmission</Menu.Item>
-              <Menu.Item key="4">Brake</Menu.Item>
-              <Menu.Item key="5">Steering</Menu.Item>
-              <Menu.Item key="6">Belt</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub6" icon={<TagsOutlined />} title="East Industry">
-              <Menu.Item key="7">Suspension</Menu.Item>
-              <Menu.Item key="8">Chassis</Menu.Item>
-              <Menu.Item key="9">Air Filter</Menu.Item>
-              <Menu.Item key="10">Lights</Menu.Item>
-              <Menu.Item key="11">Oil Filter</Menu.Item>
-              <Menu.Item key="12">Coolant</Menu.Item>
-            </SubMenu>
-          </SubMenu>
-        </SubMenu>
         {companyList}
       </Menu>
     </Sider>

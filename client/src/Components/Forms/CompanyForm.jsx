@@ -6,10 +6,10 @@ function CompanyForm() {
   const [form] = Form.useForm();
 
   function handleFinish(data) {
-    console.log(data);
+    // console.log(data);
     axios.post(process.env.REACT_APP_API_URL + "/companies", data);
-    // form.resetFields();
-    // window.location.reload();
+    form.resetFields();
+    window.location.reload();
   }
 
   return (

@@ -46,21 +46,21 @@ class ShowAssetList extends Component {
             <h4>Name</h4>
           </Col>
 
-          <Col span={5}>
+          <Col span={4}>
             <h4>
               <Divider type="vertical" />
               Owner
             </h4>
           </Col>
 
-          <Col span={5}>
+          <Col span={4}>
             <h4>
               <Divider type="vertical" />
               Model
             </h4>
           </Col>
 
-          <Col span={5}>
+          <Col span={4}>
             <h4>
               <Divider type="vertical" />
               Status
@@ -72,6 +72,9 @@ class ShowAssetList extends Component {
               <Divider type="vertical" />
               Health
             </h4>
+          </Col>
+          <Col span={3}>
+            <Divider type="vertical" />
           </Col>
         </Row>
         <div style={{ paddingLeft: "15px" }}>{assetList}</div>

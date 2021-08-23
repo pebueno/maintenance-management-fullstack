@@ -1,4 +1,3 @@
-// import React from "react";
 import React, { useState, useRef } from "react";
 import { Form, Input, Button, Select, Row, Col } from "antd";
 import axios from "axios";
@@ -15,8 +14,7 @@ const useConstructor = (callBack = () => {}) => {
 function UnitForm() {
   const [form] = Form.useForm();
   function handleFinish(data) {
-    console.log(data);
-
+    // console.log(data);
     axios.post(process.env.REACT_APP_API_URL + "/units", data);
     form.resetFields();
     window.location.reload();
@@ -51,7 +49,6 @@ function UnitForm() {
     <Form
       form={form}
       onFinish={handleFinish}
-      // layout="inline"
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 14 }}
       layout="horizontal"
@@ -63,10 +60,7 @@ function UnitForm() {
             label="Owner"
             rules={[{ required: true, message: "Who owns this asset?" }]}
           >
-            <Select defaultValue="Freios Supremos">
-              <Option value="Freios Supremos">Freios Supremos</Option>
-              {companyList}
-            </Select>
+            <Select>{companyList}</Select>
           </Form.Item>
           <Form.Item
             name={["name"]}

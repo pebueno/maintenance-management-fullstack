@@ -16,7 +16,6 @@ import Footer from "./Components/Layout/Footer";
 //Pages
 import MainPage from "./Components/Pages/index";
 import NotFound from "./Components/Pages/404";
-import ManagePage from "./Components/Pages/management";
 import CreatePage from "./Components/Pages/create";
 import ShowCompanyDetails from "./Components/Pages/Details/ShowCompanyDetails";
 import ShowUnitDetails from "./Components/Pages/Details/ShowUnitDetails";
@@ -44,7 +43,6 @@ class App extends Component {
             <Content style={{ margin: "20px 28px" }}>
               <Switch>
                 <Route exact path="/" component={MainPage} />
-                <Route path="/management" component={ManagePage} />
                 <Route path="/create" component={CreatePage} />
                 <Route
                   path="/show-company/:id"

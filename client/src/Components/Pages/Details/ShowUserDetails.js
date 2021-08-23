@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import "../../App.css";
 import axios from "axios";
 import { Table, PageHeader, Space } from "antd";
+import { onDeleteUser } from "../../Utils/Delete";
 
 class ShowUserDetails extends Component {
   constructor(props) {
@@ -30,19 +30,6 @@ class ShowUserDetails extends Component {
       });
   }
 
-  //Delete user
-  onDeleteClick(id) {
-    axios
-      .delete(process.env.REACT_APP_API_URL + "/users/" + id)
-      .then((res) => {
-        this.props.history.push("/");
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log("Error form ShowUserDetails_deleteClick");
-      });
-  }
-
   render() {
     const user = this.state.user;
     const columns = [
@@ -65,7 +52,11 @@ class ShowUserDetails extends Component {
           <Space size="middle">
             <Link to={`/create`}>Create</Link>
             <Link to={`/edit-user/${user._id}`}>Edit User</Link>
-            <Link onClick={this.onDeleteClick.bind(this, user._id)}>
+            <Link
+              onClick={() => {
+                onDeleteUser(this.props.match.params.id, this.props.history);
+              }}
+            >
               Delete
             </Link>
           </Space>

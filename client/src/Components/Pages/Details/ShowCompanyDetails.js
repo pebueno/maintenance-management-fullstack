@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import "../../App.css";
 import axios from "axios";
 import { Table, PageHeader, Space } from "antd";
-
+import { onDeleteCompany } from "../../Utils/Delete";
 class showCompanyDetails extends Component {
   constructor(props) {
     super(props);
@@ -32,19 +31,6 @@ class showCompanyDetails extends Component {
       });
   }
 
-  //Delete Company
-  onDeleteClick(id) {
-    axios
-      .delete(process.env.REACT_APP_API_URL + "/companies/" + id)
-      .then((res) => {
-        this.props.history.push("/");
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log("Error form ShowCompanyDetails_deleteClick");
-      });
-  }
-
   render() {
     const company = this.state.company;
 
@@ -59,7 +45,11 @@ class showCompanyDetails extends Component {
         render: (text, record) => (
           <Space size="middle">
             <Link to={`/edit-company/${company._id}`}>Edit Company</Link>
-            <Link onClick={this.onDeleteClick.bind(this, company._id)}>
+            <Link
+              onClick={() => {
+                onDeleteCompany(this.props.match.params.id, this.props.history);
+              }}
+            >
               Delete
             </Link>
           </Space>

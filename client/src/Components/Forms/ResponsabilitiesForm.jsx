@@ -1,10 +1,9 @@
-// import React from "react";
 import React, { useState, useRef } from "react";
-// import { Form, Input, Button, Select } from "antd";
 import { Form, Input, Button, Select, Row, Col, Collapse } from "antd";
 import axios from "axios";
 const { Option } = Select;
 const { Panel } = Collapse;
+
 // Create Constructor
 const useConstructor = (callBack = () => {}) => {
   const hasBeenCalled = useRef(false);
@@ -15,31 +14,31 @@ const useConstructor = (callBack = () => {}) => {
 
 function ResponsabilitiesForm() {
   const [form] = Form.useForm();
+
   function handleFinish(data) {
-    console.log(data);
-    console.log(data.id);
-    axios.put(process.env.REACT_APP_API_URL + "/users", data);
-    // form.resetFields();
-    // window.location.reload();
+    // console.log(data);
+    // console.log(data.id);
+
+    axios
+      .get(process.env.REACT_APP_API_URL + "/users/" + data.id)
+      .then((response) => {
+        const existingAssets = response.data.asset;
+        const existingUnits = response.data.unit;
+        existingAssets.push(data.asset);
+        existingUnits.push(data.unit);
+        axios.put(process.env.REACT_APP_API_URL + "/users/" + data.id, {
+          asset: existingAssets,
+          unit: existingUnits,
+        });
+      });
+    form.resetFields();
+    window.location.reload();
   }
 
-  // const [companies, setCompanies] = useState([]);
   const [assets, setAssets] = useState([]);
   const [units, setUnits] = useState([]);
   const [users, setUsers] = useState([]);
 
-  //Read Operation - List Companies
-  // function getCompanies() {
-  //   axios
-  //     .get(process.env.REACT_APP_API_URL + "/companies")
-  //     .then((res) => {
-  //       setCompanies(res.data);
-  //       // console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error listing the companies");
-  //     });
-  // }
   //Read Operation - List Units
   function getUnits() {
     axios
@@ -76,16 +75,6 @@ function ResponsabilitiesForm() {
         console.log("Error listing the assets");
       });
   }
-  // let companyList;
-  // if (!companies) {
-  //   companyList = "there is no company recored!";
-  // } else {
-  //   companyList = companies.map((company, k) => (
-  //     <Option company={company} key={company._id} value={company.name}>
-  //       {company.name}
-  //     </Option>
-  //   ));
-  // }
   let unitList;
   if (units) {
     unitList = units.map((unit, k) => (
@@ -121,6 +110,12 @@ function ResponsabilitiesForm() {
         >
           <Col gutter={24}>
             <Input.Group>
+              <Form.Item
+                name={["id"]}
+                hidden={true}
+                initialValue={user._id}
+                noStyle
+              ></Form.Item>
               <Form.Item label="Name">
                 <Input disabled type="text" value={user.name} name="name" />
               </Form.Item>
@@ -152,7 +147,6 @@ function ResponsabilitiesForm() {
   }
 
   useConstructor(() => {
-    // getCompanies();
     getAssets();
     getUnits();
     getUsers();

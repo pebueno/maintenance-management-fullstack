@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Table, Tag, Space, List, Divider, Image, PageHeader } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { onDeleteAsset } from "../../Utils/Delete";
 
 class ShowAssetDetails extends Component {
   constructor(props) {
@@ -26,19 +27,6 @@ class ShowAssetDetails extends Component {
       })
       .catch((err) => {
         console.log("Error from ShowAssetDetails");
-      });
-  }
-
-  //Delete asset
-  onDeleteClick(id) {
-    axios
-      .delete(process.env.REACT_APP_API_URL + "/assets/" + id)
-      .then((res) => {
-        this.props.history.push("/");
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log("Error form ShowAssetDetails_deleteClick");
       });
   }
 
@@ -90,7 +78,11 @@ class ShowAssetDetails extends Component {
         render: (text, record) => (
           <Space size="middle">
             <Link to={`/edit-asset/${asset._id}`}>Edit Asset</Link>
-            <Link onClick={this.onDeleteClick.bind(this, asset._id)}>
+            <Link
+              onClick={() => {
+                onDeleteAsset(this.props.match.params.id, this.props.history);
+              }}
+            >
               Delete
             </Link>
           </Space>

@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 // import { render } from "react-dom";
 import { Divider, Row, Col, Tag, Statistic, Progress } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
@@ -77,7 +76,7 @@ const MainPage = () => {
       .get(process.env.REACT_APP_API_URL + "/companies")
       .then((res) => {
         setCompanies(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log("Error listing the companies");
@@ -121,12 +120,10 @@ const MainPage = () => {
   }
 
   let healthList = [];
-  // let statusList = [];
   let Running = 0;
   let Alerting = 0;
   let Stopped = 0;
 
-  // let assetList;
   if (assets) {
     assets.map((asset, k) => {
       healthList.push(asset.health);
@@ -162,11 +159,6 @@ const MainPage = () => {
     title: {
       text: "Status Quantity",
     },
-    // series: [
-    //   {
-    //     data: [Running, Alerting, Stopped],
-    //   },
-    // ],
     series: [
       {
         name: "Running",
@@ -185,94 +177,6 @@ const MainPage = () => {
       },
     ],
   };
-
-  // let companyList;
-  // if (!companies) {
-  //   companyList = "there is no company recored!";
-  // } else {
-  //   companyList = companies.map((company, k) => (
-  //     <Col className="gutter-row" span={12}>
-  //       <div className="whiteBox shadow">
-  //         <div className="pad20">
-  //           <h3 style={{ color: "#22075e", marginBottom: 5 }}>
-  //             Company {company.name}
-  //           </h3>
-  //         </div>
-  //         <div style={{ margin: " 0 0 7px 15px" }}>
-  //           Users
-  //           {users.map((user) => {
-  //             return user.employer === company.name ? (
-  //               <>
-  //                 <Divider type="vertical" />
-  //                 <a href="#">{user.name}</a>
-  //               </>
-  //             ) : null;
-  //           })}
-  //         </div>
-
-  //       </div>
-  //     </Col>
-  //   ));
-  // }
-  // <SubMenu
-  //   company={company}
-  //   key={company._id}
-  //   icon={<TrademarkCircleOutlined />}
-  //   title={company.name}
-  // >
-  //   <Menu.Item key={"/show-company/" + company._id}>
-  //     <SettingOutlined />
-  //     <span>Config.</span>
-  //     <Link to={"/show-company/" + company._id}></Link>
-  //   </Menu.Item>
-  //   {units.map((unit) => {
-  //     return unit.owner === company.name ? (
-  //       <SubMenu
-  //         icon={<ShopOutlined />}
-  //         title={unit.name}
-  //         key={unit._id}
-  //         unit={unit}
-  //       >
-  //         <Menu.Item key={"/show-unit/" + unit._id}>
-  //           <SettingOutlined />
-  //           <span>Config.</span>
-  //           <Link to={"/show-unit/" + unit._id}></Link>
-  //         </Menu.Item>
-  //         {assets.map((asset) => {
-  //           return asset.owner === unit.name ? (
-  //             <Menu.Item
-  //               // title={asset.name}
-  //               // key={asset._id}
-  //               asset={asset}
-  //               key={"/show-asset/" + asset._id}
-  //               // key="7"
-  //             >
-  //               {asset.name}
-  //               <Link to={"/show-asset/" + asset._id}></Link>
-  //             </Menu.Item>
-  //           ) : null;
-  //         })}
-  //       </SubMenu>
-  //     ) : null;
-  //   })}
-  //   {users.map((user) => {
-  //     return user.employer === company.name ? (
-  //       <SubMenu
-  //         icon={<UserOutlined />}
-  //         title={user.name}
-  //         key={user._id}
-  //         user={user}
-  //       >
-  //         <Menu.Item key={"/show-user/" + user._id}>
-  //           <SettingOutlined />
-
-  //           <span>Config.</span>
-  //           <Link to={"/show-user/" + user._id}></Link>
-  //         </Menu.Item>
-  //       </SubMenu>
-  //     ) : null;
-  //   })}
-  // </SubMenu>
 
   useConstructor(() => {
     getCompanies();

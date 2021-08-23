@@ -95,17 +95,12 @@ class UpdateAssetInfo extends Component {
             <div className="whiteBox shadow">
               <div className="pad20">
                 <Form
-                  // form={form}
-                  // onFinish={handleFinish}
                   onFinish={this.onFinish}
-                  //   layout="inline"
                   labelCol={{ span: 4 }}
                   wrapperCol={{ span: 14 }}
                   layout="horizontal"
                 >
-                  {/* <Input.Group> */}
                   <Form.Item
-                    // name={["owner"]}
                     label="Owner"
                     rules={[
                       { required: true, message: "Who owns this asset?" },
@@ -118,7 +113,6 @@ class UpdateAssetInfo extends Component {
                     </Select>
                   </Form.Item>
                   <Form.Item
-                    // name={["name"]}
                     label="Name"
                     rules={[
                       { required: true, message: "Please tell the name!" },
@@ -133,7 +127,6 @@ class UpdateAssetInfo extends Component {
                     />
                   </Form.Item>
                   <Form.Item
-                    // name={["image"]}
                     label="Image Url"
                     rules={[
                       { required: true, message: "Please give the image url!" },
@@ -148,7 +141,6 @@ class UpdateAssetInfo extends Component {
                     />
                   </Form.Item>
                   <Form.Item
-                    // name={["description"]}
                     label="Description"
                     rules={[
                       { required: true, message: "Please describe the asset!" },
@@ -163,7 +155,6 @@ class UpdateAssetInfo extends Component {
                     />
                   </Form.Item>
                   <Form.Item
-                    // name={["model"]}
                     label="Model"
                     rules={[
                       { required: true, message: "Please choose the model!" },
@@ -178,7 +169,6 @@ class UpdateAssetInfo extends Component {
                     />
                   </Form.Item>
                   <Form.Item
-                    // name={["health"]}
                     label="Health"
                     rules={[
                       {
@@ -192,10 +182,7 @@ class UpdateAssetInfo extends Component {
                       value={this.state.health}
                       marks={{
                         0: "0%",
-                        // 20: 'B',
                         50: "50%",
-                        // 60: 'D',
-                        // 80: 'E',
                         100: "100%",
                       }}
                     />
@@ -207,7 +194,6 @@ class UpdateAssetInfo extends Component {
                     />
                   </Form.Item>
                   <Form.Item
-                    // name={["status"]}
                     label="Status"
                     rules={[
                       { required: true, message: "Please choose the status!" },

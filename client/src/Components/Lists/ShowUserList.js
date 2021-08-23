@@ -41,15 +41,18 @@ class ShowUserList extends Component {
           style={{ background: "#FAFAFA", padding: "15px" }}
           className="tableTitle"
         >
-          <Col span={12}>
+          <Col span={10}>
             <h4>User</h4>
           </Col>
 
-          <Col span={12}>
+          <Col span={10}>
             <h4>
               <Divider type="vertical" />
               Employer
             </h4>
+          </Col>
+          <Col span={4}>
+            <Divider type="vertical" />
           </Col>
         </Row>
         <div style={{ paddingLeft: "15px" }}>{userList}</div>
