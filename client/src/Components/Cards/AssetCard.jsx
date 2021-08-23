@@ -6,7 +6,7 @@ const AssetCard = (props) => {
   const asset = props.asset;
 
   return (
-    <Row style={{ padding: "15px 0" }}>
+    <Row style={{ padding: "15px 0" }} className="tableDesign">
       <Col span={6}>
         <Link to={`/show-asset/${asset._id}`}>{asset.name}</Link>
       </Col>

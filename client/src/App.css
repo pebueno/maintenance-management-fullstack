@@ -19,3 +19,23 @@
     padding: 0 20px;
   }
 }
+.ant-divider-vertical {
+  height: 1.5em;
+}
+
+.tableTitle {
+  border-bottom: 1.5px;
+  border-bottom-style: solid;
+  border-bottom-color: #f0f0f0;
+  width: 97%;
+}
+.tableDesign {
+  border-bottom: 1.5px;
+  border-bottom-style: solid;
+  border-bottom-color: #f0f0f0;
+  width: 97%;
+}
+
+.tableDesign:hover {
+  background: #fafafa;
+}

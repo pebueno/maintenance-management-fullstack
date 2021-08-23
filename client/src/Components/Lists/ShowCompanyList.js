@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Table } from "antd";
+// import { Table } from "antd";
+import { Row, Col, Divider } from "antd";
 
 // import "../App.css";
 import axios from "axios";
@@ -43,23 +44,18 @@ class ShowCompanyList extends Component {
       ));
     }
 
-    //Data for Tables
-    const dataSource = [
-      {
-        name: "Pedro",
-      },
-    ];
-
-    const columns = [
-      {
-        title: "Company",
-        // dataIndex: "client",
-        render: () => <span>{companyList}</span>,
-      },
-    ];
-
     return (
-      <Table columns={columns} dataSource={dataSource} pagination={false} />
+      <>
+        <Row
+          style={{ background: "#FAFAFA", padding: "15px" }}
+          className="tableTitle"
+        >
+          <Col span={6}>
+            <h4>Name</h4>
+          </Col>
+        </Row>
+        <div style={{ paddingLeft: "15px" }}>{companyList}</div>
+      </>
     );
   }
 }

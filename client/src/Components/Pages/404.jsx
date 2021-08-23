@@ -14,7 +14,7 @@ const NotFound = () => {
           </span>
         }
       >
-        <Button type="primary" href="/">
+        <Button type="primary" href="/create">
           Create Now
         </Button>
       </Empty>

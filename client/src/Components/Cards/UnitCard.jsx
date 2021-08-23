@@ -1,20 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
-// import "../App.css";
 
 const UnitCard = (props) => {
   const unit = props.unit;
 
   return (
-    <Row>
+    <Row style={{ padding: "15px 0" }} className="tableDesign">
       <Col span={12}>
-        <p>{unit.owner}</p>
+        <Link to={`/show-unit/${unit._id}`}>{unit.name}</Link>
       </Col>
+
       <Col span={12}>
-        <Link to={`/show-unit/${unit._id}`}>
-          <p>{unit.name}</p>
-        </Link>
+        <span>{unit.owner}</span>
       </Col>
     </Row>
   );

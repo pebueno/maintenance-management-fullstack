@@ -21,6 +21,7 @@ app.use(cors({ origin: true, credentials: true }));
 // Init Middleware
 app.use(express.json({ extended: false }));
 
+// Accessing the path module
 app.use(express.static("client/build"));
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));

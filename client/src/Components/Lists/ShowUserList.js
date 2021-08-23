@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Table } from "antd";
-
-// import "../App.css";
+import { Row, Col, Divider } from "antd";
 import axios from "axios";
-// import { Link } from "react-router-dom";
 import UserCard from "../Cards/UserCard";
 
 class ShowUserList extends Component {
@@ -38,25 +35,25 @@ class ShowUserList extends Component {
     } else {
       userList = users.map((user, k) => <UserCard user={user} key={k} />);
     }
-    //Data for Tables
-    const dataSource = [
-      {
-        name: "Pedro",
-      },
-    ];
-
-    const columns = [
-      {
-        title: "Employer",
-        // dataIndex: "client",
-        render: () => <span>{userList}</span>,
-      },
-      {
-        title: "User",
-      },
-    ];
     return (
-      <Table columns={columns} dataSource={dataSource} pagination={false} />
+      <>
+        <Row
+          style={{ background: "#FAFAFA", padding: "15px" }}
+          className="tableTitle"
+        >
+          <Col span={12}>
+            <h4>User</h4>
+          </Col>
+
+          <Col span={12}>
+            <h4>
+              <Divider type="vertical" />
+              Employer
+            </h4>
+          </Col>
+        </Row>
+        <div style={{ paddingLeft: "15px" }}>{userList}</div>
+      </>
     );
   }
 }

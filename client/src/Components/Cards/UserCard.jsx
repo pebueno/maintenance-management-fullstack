@@ -7,14 +7,13 @@ const UserCard = (props) => {
   const user = props.user;
 
   return (
-    <Row>
+    <Row style={{ padding: "15px 0" }} className="tableDesign">
       <Col span={12}>
-        <p>{user.employer}</p>
+        <Link to={`/show-user/${user._id}`}>{user.name}</Link>
       </Col>
+
       <Col span={12}>
-        <Link to={`/show-user/${user._id}`}>
-          <p>{user.name}</p>
-        </Link>
+        <span>{user.employer}</span>
       </Col>
     </Row>
   );

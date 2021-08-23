@@ -77,7 +77,7 @@ const MainPage = () => {
       .get(process.env.REACT_APP_API_URL + "/companies")
       .then((res) => {
         setCompanies(res.data);
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log("Error listing the companies");

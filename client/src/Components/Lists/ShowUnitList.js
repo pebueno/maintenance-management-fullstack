@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Table } from "antd";
-
-// import "../App.css";
+import { Row, Col, Divider } from "antd";
 import axios from "axios";
-// import { Link } from "react-router-dom";
 import UnitCard from "../Cards/UnitCard";
 
 class ShowUnitList extends Component {
@@ -38,26 +35,26 @@ class ShowUnitList extends Component {
     } else {
       unitList = units.map((unit, k) => <UnitCard unit={unit} key={k} />);
     }
-    //Data for Tables
-    const dataSource = [
-      {
-        name: "Pedro",
-      },
-    ];
-
-    const columns = [
-      {
-        title: "Owner",
-        // dataIndex: "client",
-        render: () => <span>{unitList}</span>,
-      },
-      {
-        title: "Unit",
-      },
-    ];
 
     return (
-      <Table columns={columns} dataSource={dataSource} pagination={false} />
+      <>
+        <Row
+          style={{ background: "#FAFAFA", padding: "15px" }}
+          className="tableTitle"
+        >
+          <Col span={12}>
+            <h4>Unit</h4>
+          </Col>
+
+          <Col span={12}>
+            <h4>
+              <Divider type="vertical" />
+              Owner
+            </h4>
+          </Col>
+        </Row>
+        <div style={{ paddingLeft: "15px" }}>{unitList}</div>
+      </>
     );
   }
 }

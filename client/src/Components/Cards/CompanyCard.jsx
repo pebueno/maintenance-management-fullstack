@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "../App.css";
+import { Row, Col } from "antd";
 
 const CompanyCard = (props) => {
   const company = props.company;
 
   return (
-    <Link to={`/show-company/${company._id}`}>
-      <p>{company.name}</p>
-    </Link>
+    <Row style={{ padding: "15px 0" }} className="tableDesign">
+      <Col span={6}>
+        <Link to={`/show-company/${company._id}`}>{company.name}</Link>
+      </Col>
+    </Row>
   );
 };
 

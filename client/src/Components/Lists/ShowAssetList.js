@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Row, Col } from "antd";
+import { Row, Col, Divider } from "antd";
 import AssetCard from "../Cards/AssetCard";
 
 class ShowAssetList extends Component {
@@ -38,25 +38,40 @@ class ShowAssetList extends Component {
     }
     return (
       <>
-        <Row style={{ background: "#FAFAFA", padding: "15px" }}>
+        <Row
+          style={{ background: "#FAFAFA", padding: "15px" }}
+          className="tableTitle"
+        >
           <Col span={6}>
             <h4>Name</h4>
           </Col>
 
           <Col span={5}>
-            <h4>Owner</h4>
+            <h4>
+              <Divider type="vertical" />
+              Owner
+            </h4>
           </Col>
 
           <Col span={5}>
-            <h4>Model</h4>
+            <h4>
+              <Divider type="vertical" />
+              Model
+            </h4>
           </Col>
 
           <Col span={5}>
-            <h4>Status</h4>
+            <h4>
+              <Divider type="vertical" />
+              Status
+            </h4>
           </Col>
 
           <Col span={3}>
-            <h4>Health</h4>
+            <h4>
+              <Divider type="vertical" />
+              Health
+            </h4>
           </Col>
         </Row>
         <div style={{ paddingLeft: "15px" }}>{assetList}</div>
